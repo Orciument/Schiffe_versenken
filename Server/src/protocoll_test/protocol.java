@@ -13,7 +13,7 @@ public class protocol {
         try {
             String message = bsp1();
             System.out.println(message);
-            message message1 = message_builder.disect(message);
+            message message1 = message_builder.parseToEvent(message);
             print(message1);
         }
         catch (Exception e)
@@ -31,7 +31,7 @@ public class protocol {
 
     public static String bsp1() throws UnknownHostException {
         String message = "";
-        HashMap<String, String> header = new HashMap<String, String>();
+        HashMap<String, String> header = new HashMap<>();
         header.put("version","0.1");
         header.put("type", "test");
         header.put("time", String.valueOf(System.currentTimeMillis()));

@@ -1,35 +1,30 @@
 package listener;
 
-import main.server;
+import data.dataHandler;
 
-import java.net.ServerSocket;
 import java.net.Socket;
 
-public class acceptListener extends Thread{
-    server server;
+public class acceptListener extends Thread {
+    dataHandler dataHandler;
 
-    public acceptListener(ServerSocket serverSocket, server server)
-    {
-        this.server = server;
-        listener();
-    }
-
-    public void listener()
-    {
-        while (server.run)
-            try {
-                Socket newClientSocket = server.serverSocket.accept();
-                server.newClient(newClientSocket);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-
+    public acceptListener(dataHandler dataHandler) {
+        this.dataHandler = dataHandler;
     }
 
     @Override
     public void run() {
         listener();
+    }
+
+    public void listener() {
+        while (dataHandler.getRUN())
+            try {
+                Socket newClientSocket = dataHandler.getServerSocket().accept();
+                //TODO Request Information from Client, and Validate the connection
+                dataHandler.addClient(newClientSocket, "test");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
     }
 }

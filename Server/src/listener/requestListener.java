@@ -1,18 +1,24 @@
 package listener;
 
-import main.server;
-import protocoll_test.*;
+import data.dataHandler;
 
-import java.net.ServerSocket;
+public class requestListener extends Thread {
 
-public class requestListener {
+    dataHandler dataHandler;
 
-    server server;
+    public requestListener(dataHandler dataHandler) {
+        this.dataHandler = dataHandler;
+    }
 
-    public requestListener(ServerSocket serverSocket, server server)
-    {
-        this.server = server;
-        message_builder.
+    @Override
+    public void run() {
+        listener();
+    }
+
+    public void listener() {
+        while (dataHandler.getRUN()) {
+
+        }
     }
 
     //TODO Bearbeitet alle Requests

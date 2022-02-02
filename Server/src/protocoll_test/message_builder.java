@@ -9,7 +9,21 @@ public class message_builder {
     //Protokoll Version
     static String version = "0.1";
 
-    public static message disect(String input) {
+    public static String buildMessage(String type, InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, HashMap<String, String> body) {
+        HashMap<String, Object> header = new HashMap<>();
+        header.put("version", version);
+        header.put("type", type);
+        header.put("time", System.currentTimeMillis());
+        header.put("sourceAddress", sourceAddress);
+        header.put("destinationAddress", destinationAddress.toString());
+        String message = header.toString();
+        message = message.concat(" body=");
+        message = message.concat(body.toString());
+        return message;
+    }
+
+    //TODO Change all Error functions with custom Exceptions and send the Error throw a catch Block in der Class that wanted to parse
+    public static message parseToEvent(String input) throws Exception {
 
         InetSocketAddress sourceAddress;
         InetSocketAddress destinationAddress;
@@ -26,52 +40,45 @@ public class message_builder {
 
 
         if (!input.contains("{") || !input.contains("}")) {
-
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         String header = input.substring(input.indexOf("{"), input.indexOf("}") + 1);
 
 
         if (!header.contains("destinationAddress")) {
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         String destinationAddressString = fetchValue(header, "destinationAddress");
         destinationAddress = new InetSocketAddress(destinationAddressString.substring(0, destinationAddressString.indexOf(":")), Integer.parseInt(destinationAddressString.substring(destinationAddressString.indexOf(":") + 1)));
 
         if (!header.contains("time")) {
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         time = new Date(Long.parseLong(fetchValue(header, "time")));
 
         if (!header.contains("version")) {
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         version = fetchValue(header, "version");
 
         if (!header.contains("type")) {
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         type = fetchValue(header, "type");
 
         if (!input.contains("body")) {
-            error(sourceAddress);
-            return null;
+            throw new Exception("Message Formatting Error");
         }
         body = parseToKeyValuePair(input.substring(input.indexOf("body") + 5));
-
 
         return new message(version, type, time, sourceAddress, destinationAddress, body);
     }
 
-    private static void error(InetSocketAddress address) {
+    private static String buildErrorMessage(InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, String errorType) {
+        //TODO Protokoll für Error nicht fertig - Concept
         HashMap<String, String> body = new HashMap<>();
-        body.put("ErrorType","Message Formatting Error");
-        buildMessage("Error",address,body);
+        body.put("ErrorType", errorType);
+        return buildMessage("Error", destinationAddress, sourceAddress, body);
     }
 
     private static String fetchValue(String header, String query) {
@@ -100,28 +107,4 @@ public class message_builder {
         }
         return bodyHashMap;
     }
-
-    private static void buildMessage(String type, InetSocketAddress destinationAddress, HashMap<String, String> body) {
-        HashMap<String, Object> header = new HashMap<>();
-        header.put("version", version);
-        header.put("type", type);
-        header.put("time", System.currentTimeMillis());
-        //TODO Serversocket InetSocketaddress: Wie kommt die hier her?
-        //header.put("sourceAddress", );
-        header.put("destinationAddress", destinationAddress.toString());
-        String message = header.toString();
-        message = message.concat(" body=");
-        message = message.concat(body.toString());
-        System.out.println(message);
-        //TODO Wie wird die Nachricht jetzt gesendet?
-    }
 }
-
-
-
-    git init
-    git add README.md
-        git commit -m "first commit"
-        git branch -M main
-        git remote add origin https://github.com/Orciument/Schiffe_versenken.git
-        git push -u origin main

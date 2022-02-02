@@ -1,4 +1,4 @@
-package client;
+package data;
 
 import java.net.Socket;
 
@@ -12,8 +12,9 @@ public class client {
     int[] maxShips = {1, 2, 3, 4};
     int[] currentShips = new int[4];
 
-    public client(Socket socket)
+    public client(Socket socket, String name)
     {
         clientSocket = socket;
+        this.name = name;
     }
 }

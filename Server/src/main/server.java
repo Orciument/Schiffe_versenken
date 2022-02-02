@@ -1,22 +1,16 @@
 package main;
 
 
-import client.*;
-import listener.*;
+import data.client;
 
 import java.io.IOException;
 import java.net.BindException;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class server {
-
-    public static void main(String[] args) throws IOException {
-        new server();
-    }
 
     //TODO Soll ersetzt werden durch main
     //TODO Daten werden von einer anderen Klasse verwaltet
@@ -31,7 +25,8 @@ public class server {
     Thread requestListener;
     Thread consoleListener;
 
-    ArrayList<client> ClientList = new ArrayList<client>();
+    //TODO Deprecated - Ersetzt durch Datahandler
+    ArrayList<client> ClientList = new ArrayList<>();
     int gameState = 0;
     /*
     0 = Vorm Spiel/Server Start
@@ -42,37 +37,30 @@ public class server {
     int clientIndexHasTurn = 0;
 
 
-
-    public server() throws IOException {
-        newServer();
-        listener();
-    }
-
-
-
-
+    //TODO DEPRECATED
     public void newServer() throws IOException {
-        //TODO UnknownHostException einfügen. Ist ONLINE?
+
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("[Server] Bitte gebe den Port an: ");
         int port = scanner.nextInt();
         try {
             serverSocket = new ServerSocket(port);
-        } catch (BindException e)
-        {
+        } catch (BindException e) {
             System.out.println("[Server] Port already in use, please select a different Port");
             scanner.close();
             newServer(); //Tries to open a new Server, in case the process has failed
         }
         String hostname = Inet4Address.getLocalHost().toString();
-        hostname = hostname.substring(hostname.indexOf("/") +1 );
+        hostname = hostname.substring(hostname.indexOf("/") + 1);
         System.out.println("[Server] Started auf:");
         System.out.println("[Server] IP:" + hostname);
         System.out.println("[Server] Port: " + port);
         gameState = 1;
     }
 
+    //TODO DEPRECATED
+    /*
     public void listener() {
         acceptListener = new Thread(() -> {
             new acceptListener(serverSocket, this);
@@ -86,8 +74,7 @@ public class server {
         acceptListener.start();
         requestListener.start();
         consoleListener.start();
-    }
-
+    }*/
 
 
     //TODO Deprecated - Funktioniert vermutlich wegen Thread Security eh nicht -> "bool run = false"
@@ -99,6 +86,7 @@ public class server {
     }
 
     //TODO Soll hier nicht sein, sondern in AcceptListener
+    /*
     public void newClient(Socket socket) {
         //Validate?
         if (gameState == 1)
@@ -109,5 +97,5 @@ public class server {
             System.out.println("[Server] Neuer Client hinzugefügt");
         }
 
-    }
+    }*/
 }
