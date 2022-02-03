@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Minor Fixes, Suppressed unnecessary warnings">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Added sender.java">
+      <change afterPath="$PROJECT_DIR$/Server/src/main/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,7 +53,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="24LBu3bwxZMJhEP6L5CG9vSd4ic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -82,12 +96,13 @@
       <module name="Server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.protocol.*" />
+          <option name="PATTERN" value="protocol.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.protocol" />
-      <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-16" />
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.message_builderTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
@@ -140,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643890952782</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added sender.java">
+      <created>1643891378645</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1643891378645</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,6 +174,17 @@
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </State>
@@ -168,7 +201,8 @@
     <MESSAGE value="JUnit Tests angefangen, message_builder fehler mit Geräte Namen in InetSocketAddresses behoben" />
     <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes, Suppressed unnecessary warnings" />
+    <MESSAGE value="Added sender.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sender.java" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

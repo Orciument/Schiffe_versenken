@@ -1,4 +1,4 @@
-package main.oldDEPRECATED;
+package oldDEPRECATED;
 
 @SuppressWarnings("CommentedOutCode")
 public class protocol {

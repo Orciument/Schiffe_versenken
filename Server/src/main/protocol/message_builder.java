@@ -1,4 +1,4 @@
-package main.protocol;
+package protocol;
 
 import java.net.InetSocketAddress;
 import java.util.Date;
@@ -57,7 +57,6 @@ public class message_builder {
         }
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
     public static message parseToEvent(String input) throws IllegalArgumentException {
 
         InetSocketAddress sourceAddress;
@@ -67,14 +66,12 @@ public class message_builder {
         LinkedHashMap<String, String> body;
 
         if (!input.contains("sourceAddress")) {
-            //TODO Find Solution
-            System.out.println("GHER");
-            return null;
+            throw new IllegalArgumentException("Input String does not Contain a sourceAddress");
         }
         String sourceAddressString = fetchValue(input, "sourceAddress");
-        sourceAddress = new InetSocketAddress(sourceAddressString.substring(0, sourceAddressString.indexOf(":")), Integer.parseInt(sourceAddressString.substring(sourceAddressString.indexOf(":") + 1)));
-
-
+        String hostname = sourceAddressString.substring(1, sourceAddressString.indexOf(":"));
+        int port = Integer.parseInt(sourceAddressString.substring(sourceAddressString.indexOf(":") + 1));
+        sourceAddress = new InetSocketAddress(hostname, port);
         if (!input.contains("{") || !input.contains("}")) {
             throw new IllegalArgumentException("Message Formatting Error");
         }
@@ -85,7 +82,7 @@ public class message_builder {
             throw new IllegalArgumentException("Message Formatting Error");
         }
         String destinationAddressString = fetchValue(header, "destinationAddress");
-        destinationAddress = new InetSocketAddress(destinationAddressString.substring(0, destinationAddressString.indexOf(":")), Integer.parseInt(destinationAddressString.substring(destinationAddressString.indexOf(":") + 1)));
+        destinationAddress = new InetSocketAddress(destinationAddressString.substring(1, destinationAddressString.indexOf(":")), Integer.parseInt(destinationAddressString.substring(destinationAddressString.indexOf(":") + 1)));
 
         if (!header.contains("time")) {
             throw new IllegalArgumentException("Message Formatting Error");
@@ -105,7 +102,8 @@ public class message_builder {
         if (!input.contains("body")) {
             throw new IllegalArgumentException("Message Formatting Error");
         }
-        body = parseToKeyValuePair(input.substring(input.indexOf("body") + 5));
+        body = parseToKeyValuePair(input.substring(input.indexOf("body") + 6, input.length()-1));
+
 
         return new message(version, type, time, sourceAddress, destinationAddress, body);
     }
@@ -130,7 +128,16 @@ public class message_builder {
 
         LinkedHashMap<String, String> bodyHashMap = new LinkedHashMap<>();
         while (!body.isBlank()) {
-            String key = body.substring(0, body.indexOf("="));
+            String key;
+            if (body.charAt(0) == ' ')
+            {
+                key = body.substring(1, body.indexOf("="));
+            }
+            else
+            {
+                key = body.substring(0, body.indexOf("="));
+            }
+
             if (body.contains(",")) {
                 String value = body.substring(body.indexOf("=") + 1, body.indexOf(","));
                 bodyHashMap.put(key, value);

@@ -1,7 +1,6 @@
-package main;
 
 import main.data.dataHandler;
-import main.listener.*;
+import listener.*;
 
 public class serverMain {
 

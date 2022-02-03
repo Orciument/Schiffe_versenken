@@ -1,4 +1,4 @@
-package main.oldDEPRECATED;
+package oldDEPRECATED;
 
 
 import main.data.client;
