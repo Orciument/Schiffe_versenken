@@ -11,6 +11,7 @@ public class serverMain {
         new acceptListener(dataHandler).start();
         new requestListener(dataHandler).start();
         new consoleListener(dataHandler).start();
+        //TODO Add Message sender class
     }
 
 

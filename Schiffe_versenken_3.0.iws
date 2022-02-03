@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="JUnit Tests für message_builder.buildMessage">
-      <change beforePath="$PROJECT_DIR$/Client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/client.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Minor Fixes, Suppressed unnecessary warnings">
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.message_builderTest">
+  <component name="RunManager">
     <configuration name="message_builderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Server" />
       <extension name="coverage">
@@ -100,71 +88,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.protocol" />
       <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="message_builderTest.buildMessageCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.protocol" />
-      <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="buildMessageCorrect" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="message_builderTest.buildMessageInvalidCharacterinKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.protocol" />
-      <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="buildMessageInvalidCharacterinKey" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="message_builderTest.buildMessage_InvalidCharacterise_Value_ClosedBracket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.protocol" />
-      <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="buildMessage_InvalidCharacterise_Value_ClosedBracket" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="message_builderTest.parseToEventCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.protocol" />
-      <option name="MAIN_CLASS_NAME" value="test.protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="parseToEventCorrect" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,10 +97,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.message_builderTest" />
-        <item itemvalue="JUnit.message_builderTest.buildMessage_InvalidCharacterise_Value_ClosedBracket" />
-        <item itemvalue="JUnit.message_builderTest.buildMessageInvalidCharacterinKey" />
-        <item itemvalue="JUnit.message_builderTest.buildMessageCorrect" />
-        <item itemvalue="JUnit.message_builderTest.parseToEventCorrect" />
       </list>
     </recent_temporary>
   </component>
@@ -212,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643889652981</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Minor Fixes, Suppressed unnecessary warnings">
+      <created>1643890952782</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643890952782</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,7 +167,8 @@
     <MESSAGE value="Protokoll Angefangen, Projekt umstrukturiert" />
     <MESSAGE value="JUnit Tests angefangen, message_builder fehler mit Geräte Namen in InetSocketAddresses behoben" />
     <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
-    <option name="LAST_COMMIT_MESSAGE" value="JUnit Tests für message_builder.buildMessage" />
+    <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes, Suppressed unnecessary warnings" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
