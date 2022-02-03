@@ -9,8 +9,17 @@ public class message_builder {
     //Protokoll Version
     static String version = "0.1";
 
-    public static String buildMessage(String type, InetSocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) {
-        //TODO Throw exception when Parameters Contains "{", "}", ",", "=", "body"
+    public static String buildMessage(String type, InetSocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) throws IllegalArgumentException {
+        //Check for Illegal Arguments that could result in parsing Errors
+        checkForIllegalArguments(type, "type");
+        for (String key : body.keySet()) {
+            checkForIllegalArguments(key, "body");
+        }
+        for (String value : body.values()) {
+            checkForIllegalArguments(value, "body");
+        }
+
+
         LinkedHashMap<String, Object> header = new LinkedHashMap<>();
         header.put("version", version);
         header.put("type", type);
@@ -30,8 +39,25 @@ public class message_builder {
         return message;
     }
 
-    //TODO Change all Error functions with custom Exceptions and send the Error throw a catch Block in der Class that wanted to parse
-    public static message parseToEvent(String input) throws Exception {
+    private static void checkForIllegalArguments(String string, String from) {
+        if (string.contains("{")) {
+            throw new IllegalArgumentException("Invalid Charakter: { in " + from);
+        }
+        if (string.contains("}")) {
+            throw new IllegalArgumentException("Invalid Charakter: } in "  + from);
+        }
+        if (string.contains(",")) {
+            throw new IllegalArgumentException("Invalid Charakter: , in " + from);
+        }
+        if (string.contains("=")) {
+            throw new IllegalArgumentException("Invalid Charakter: = in " + from);
+        }
+        if (string.contains("body")) {
+            throw new IllegalArgumentException("Invalid Charakter: body in " + from);
+        }
+    }
+
+    public static message parseToEvent(String input) throws IllegalArgumentException {
 
         InetSocketAddress sourceAddress;
         InetSocketAddress destinationAddress;
@@ -40,6 +66,7 @@ public class message_builder {
         LinkedHashMap<String, String> body;
 
         if (!input.contains("sourceAddress")) {
+            //TODO Find Solution
             System.out.println("GHER");
             return null;
         }
@@ -48,41 +75,41 @@ public class message_builder {
 
 
         if (!input.contains("{") || !input.contains("}")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         String header = input.substring(input.indexOf("{"), input.indexOf("}") + 1);
 
 
         if (!header.contains("destinationAddress")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         String destinationAddressString = fetchValue(header, "destinationAddress");
         destinationAddress = new InetSocketAddress(destinationAddressString.substring(0, destinationAddressString.indexOf(":")), Integer.parseInt(destinationAddressString.substring(destinationAddressString.indexOf(":") + 1)));
 
         if (!header.contains("time")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         time = new Date(Long.parseLong(fetchValue(header, "time")));
 
         if (!header.contains("version")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         version = fetchValue(header, "version");
 
         if (!header.contains("type")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         type = fetchValue(header, "type");
 
         if (!input.contains("body")) {
-            throw new Exception("Message Formatting Error");
+            throw new IllegalArgumentException("Message Formatting Error");
         }
         body = parseToKeyValuePair(input.substring(input.indexOf("body") + 5));
 
         return new message(version, type, time, sourceAddress, destinationAddress, body);
     }
 
-    private static String buildErrorMessage(InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, String errorType) {
+    public static String buildErrorMessage(InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, String errorType) {
         //TODO Protokoll für Error nicht fertig - Concept
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("ErrorType", errorType);
