@@ -1,21 +1,29 @@
-package protocoll_test;
+package main.protocol;
 
 import java.net.InetSocketAddress;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class message_builder {
 
     //Protokoll Version
     static String version = "0.1";
 
-    public static String buildMessage(String type, InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, HashMap<String, String> body) {
-        HashMap<String, Object> header = new HashMap<>();
+    public static String buildMessage(String type, InetSocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) {
+        //TODO Throw exception when Parameters Contains "{", "}", ",", "=", "body"
+        LinkedHashMap<String, Object> header = new LinkedHashMap<>();
         header.put("version", version);
         header.put("type", type);
         header.put("time", System.currentTimeMillis());
-        header.put("sourceAddress", sourceAddress);
-        header.put("destinationAddress", destinationAddress.toString());
+
+        String sourceAddressString = sourceAddress.toString();
+        sourceAddressString = sourceAddressString.substring(sourceAddressString.indexOf("/"));
+        header.put("sourceAddress", sourceAddressString);
+
+        String destinationAddressString = destinationAddress.toString();
+        destinationAddressString = destinationAddressString.substring(destinationAddressString.indexOf("/"));
+        header.put("destinationAddress", destinationAddressString);
+
         String message = header.toString();
         message = message.concat(" body=");
         message = message.concat(body.toString());
@@ -29,7 +37,7 @@ public class message_builder {
         InetSocketAddress destinationAddress;
         Date time;
         String type;
-        HashMap<String, String> body;
+        LinkedHashMap<String, String> body;
 
         if (!input.contains("sourceAddress")) {
             System.out.println("GHER");
@@ -76,7 +84,7 @@ public class message_builder {
 
     private static String buildErrorMessage(InetSocketAddress destinationAddress, InetSocketAddress sourceAddress, String errorType) {
         //TODO Protokoll für Error nicht fertig - Concept
-        HashMap<String, String> body = new HashMap<>();
+        LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("ErrorType", errorType);
         return buildMessage("Error", destinationAddress, sourceAddress, body);
     }
@@ -90,9 +98,9 @@ public class message_builder {
         }
     }
 
-    private static HashMap<String, String> parseToKeyValuePair(String body) {
+    private static LinkedHashMap<String, String> parseToKeyValuePair(String body) {
 
-        HashMap<String, String> bodyHashMap = new HashMap<>();
+        LinkedHashMap<String, String> bodyHashMap = new LinkedHashMap<>();
         while (!body.isBlank()) {
             String key = body.substring(0, body.indexOf("="));
             if (body.contains(",")) {

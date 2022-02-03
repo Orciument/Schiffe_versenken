@@ -1,6 +1,6 @@
-package listener;
+package main.listener;
 
-import data.dataHandler;
+import main.data.dataHandler;
 
 public class consoleListener extends Thread {
 

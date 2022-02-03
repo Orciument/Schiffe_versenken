@@ -1,12 +1,8 @@
-package protocoll_test;
-
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
-import java.util.HashMap;
+package main.oldDEPRECATED;
 
 public class protocol {
 
-
+/*
 
     //TODO KLasse hat keinen Sinn, bzw. vergessen. Temporär
     public static void main(String[] args) {
@@ -67,4 +63,5 @@ public class protocol {
         System.out.println("body: "+message.body);
 
     }
+    */
 }

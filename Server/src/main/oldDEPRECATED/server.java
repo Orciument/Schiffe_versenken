@@ -1,7 +1,7 @@
-package main;
+package main.oldDEPRECATED;
 
 
-import data.client;
+import main.data.client;
 
 import java.io.IOException;
 import java.net.BindException;
@@ -17,7 +17,7 @@ public class server {
 
 
     public ServerSocket serverSocket;
-    //TODO Global? Variable that controls the 3 listener Threads
+    //TODO Global? Variable that controls the 3 main.listener Threads
     public boolean run = true;
 
 
@@ -61,7 +61,7 @@ public class server {
 
     //TODO DEPRECATED
     /*
-    public void listener() {
+    public void main.listener() {
         acceptListener = new Thread(() -> {
             new acceptListener(serverSocket, this);
         });
