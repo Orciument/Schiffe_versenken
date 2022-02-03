@@ -4,9 +4,9 @@ import java.net.Socket;
 
 public class client {
 
-    Socket clientSocket;
+    final Socket clientSocket;
 
-    String name;
+    final String name;
     int[][] shipField = new int[10][10];
     char[][] targetField = new char[10][10];
     int[] maxShips = {1, 2, 3, 4};

@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+@SuppressWarnings("CommentedOutCode")
 public class server {
 
     //TODO Soll ersetzt werden durch main
@@ -25,7 +26,7 @@ public class server {
     Thread requestListener;
     Thread consoleListener;
 
-    //TODO Deprecated - Ersetzt durch Datahandler
+    //TODO Deprecated - Ersetzt durch Data handler
     ArrayList<client> ClientList = new ArrayList<>();
     int gameState = 0;
     /*
@@ -92,7 +93,7 @@ public class server {
         if (gameState == 1)
         {
             client newClient = new client(socket);
-            //Request an Client nach Infos, Client werden Infos hinzugefügt, wenn das nicht klappt, wird dem CLient ein Error geschicht, und nicht dem Spiel hinzugefügt
+            //Request an Client nach Infos, Client werden Infos hinzugefügt, wenn das nicht klappt, wird dem Client ein Error geschickt, und nicht dem Spiel hinzugefügt
             ClientList.add(newClient);
             System.out.println("[Server] Neuer Client hinzugefügt");
         }

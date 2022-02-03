@@ -12,6 +12,7 @@ import static main.protocol.message_builder.buildMessage;
 import static main.protocol.message_builder.parseToEvent;
 
 
+@SuppressWarnings({"NewClassNamingConvention", "SpellCheckingInspection"})
 class message_builderTest {
 
     //buildMessage Tests
@@ -162,7 +163,6 @@ class message_builderTest {
 
     //Helper
     String getInet4AddressString() {
-        String hostname = null;
         try {
             String address = String.valueOf(Inet4Address.getLocalHost());
             address = address.substring(address.indexOf("/"));
@@ -181,6 +181,7 @@ class message_builderTest {
     void parseToEvent_Correct() {
         //TODO Test ist nicht richtig
         try {
+            //TODO parseToEvent can result in an Exception
             message message = parseToEvent("{sourceAddress=127.0.0.1:8001, destinationAddress=127.0.0.1:8000, time=1643842876928, type=Test, version=0.1} body={test=-1-2, name=paul, counter=302}");
             //TODO Exception handling
             //TODO Compare values

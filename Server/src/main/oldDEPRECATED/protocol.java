@@ -1,5 +1,6 @@
 package main.oldDEPRECATED;
 
+@SuppressWarnings("CommentedOutCode")
 public class protocol {
 
 /*
@@ -23,7 +24,7 @@ public class protocol {
     }
 
     //TODO Message Builder
-    //TODO Message Deconstruktor
+    //TODO Message Deconstruct
 
     public static String bsp1() throws UnknownHostException {
         String message = "";

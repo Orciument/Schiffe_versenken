@@ -9,14 +9,15 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
+@SuppressWarnings({"SpellCheckingInspection", "CanBeFinal"})
 public class client {
 
     public static void main(String[] args) {
         new client();
     }
 
-    Socket socket = new Socket();
-    InetSocketAddress serverAddress;
+    final Socket socket = new Socket();
+    final InetSocketAddress serverAddress;
     DataOutputStream dataOutputStream;
     DataInputStream dataInputStream;
     BufferedInputStream bufferedInputStream;
@@ -75,6 +76,7 @@ public class client {
 
     }
 
+    @SuppressWarnings("DuplicateBranchesInSwitch")
     public void placeShip(int size, int x, int y, String direction) {
         //b ≠ y -> b==0 is at the top
         int a = shipField[0].length - y;
@@ -232,6 +234,7 @@ public class client {
 
     //Prints the Field in the Console
     public void printShipField() {
+        //noinspection ForLoopReplaceableByForEach
         for (int j = 0; j < shipField.length; j++) {
             for (int i = 0; i < shipField[j].length; i++) {
 
@@ -243,6 +246,7 @@ public class client {
 
     public void printTargetField() {
         System.out.println("[Game] Gegner Feld: ");
+        //noinspection ForLoopReplaceableByForEach
         for (int j = 0; j < targetField.length; j++) {
             for (int i = 0; i < targetField[j].length; i++) {
                 System.out.print("  " + targetField[j][i]);

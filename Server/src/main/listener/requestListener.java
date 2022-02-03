@@ -4,7 +4,7 @@ import main.data.dataHandler;
 
 public class requestListener extends Thread {
 
-    dataHandler dataHandler;
+    final dataHandler dataHandler;
 
     public requestListener(dataHandler dataHandler) {
         this.dataHandler = dataHandler;
@@ -15,6 +15,7 @@ public class requestListener extends Thread {
         listener();
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     public void listener() {
         while (dataHandler.getRUN()) {
 

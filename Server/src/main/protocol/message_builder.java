@@ -57,6 +57,7 @@ public class message_builder {
         }
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static message parseToEvent(String input) throws IllegalArgumentException {
 
         InetSocketAddress sourceAddress;

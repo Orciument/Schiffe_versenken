@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 public class message {
 
-    public String version;
-    public String type;
-    public Date time;
-    public InetSocketAddress sourceAddress;
-    public InetSocketAddress destinationAddress;
-    public HashMap<String, String> body;
+    public final String version;
+    public final String type;
+    public final Date time;
+    public final InetSocketAddress sourceAddress;
+    public final InetSocketAddress destinationAddress;
+    public final HashMap<String, String> body;
 
     public message(String version, String type, Date time, InetSocketAddress sourceAddress, InetSocketAddress destinationAddress, HashMap<String, String> body) {
         this.version = version;

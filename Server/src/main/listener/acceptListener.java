@@ -5,7 +5,7 @@ import main.data.dataHandler;
 import java.net.Socket;
 
 public class acceptListener extends Thread {
-    dataHandler dataHandler;
+    final dataHandler dataHandler;
 
     public acceptListener(dataHandler dataHandler) {
         this.dataHandler = dataHandler;
