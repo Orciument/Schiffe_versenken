@@ -1,6 +1,7 @@
 package protocol;
 
 import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
@@ -9,7 +10,7 @@ public class message_builder {
     //Protokoll Version
     static String version = "0.1";
 
-    public static String buildMessage(String type, InetSocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) throws IllegalArgumentException {
+    public static String buildMessage(String type, SocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) throws IllegalArgumentException {
         //Check for Illegal Arguments that could result in parsing Errors
         checkForIllegalArguments(type, "type");
         for (String key : body.keySet()) {

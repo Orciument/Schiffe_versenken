@@ -1,4 +1,4 @@
-package main.data;
+package data;
 
 import java.io.IOException;
 import java.net.BindException;

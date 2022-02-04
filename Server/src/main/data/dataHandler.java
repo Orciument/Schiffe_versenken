@@ -1,4 +1,4 @@
-package main.data;
+package data;
 
 import java.net.ServerSocket;
 import java.net.Socket;

@@ -17,22 +17,23 @@ class message_builderTest {
     //buildMessage Tests
     @Test
     void buildMessage_Correct() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302");
         body.put("test", "-1-2");
 
         String message = buildMessage("Test", sourceAddress, destinationAddress, body);
+        System.out.println(message);
         message = message.replaceFirst("time=\\d+,", "time=,");
         Assertions.assertEquals(("{version=0.1, type=Test, time=, sourceAddress=" + sourceAddress + ", destinationAddress=" + destinationAddress + "} body={name=paul, counter=302, test=-1-2}"), message);
     }
 
     @Test
     void buildMessage_InvalidCharacterise_Key_OpenBracket() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("na{me", "paul");
         body.put("counter", "302");
@@ -44,8 +45,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Value_OpenBracket() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302");
@@ -57,8 +58,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Key_ClosedBracket() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("cou}nter", "302");
@@ -70,8 +71,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Value_ClosedBracket() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul}");
         body.put("counter", "302");
@@ -83,8 +84,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Key_Comma() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302");
@@ -96,8 +97,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Value_Comma() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul,");
         body.put("counter", "302");
@@ -109,8 +110,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Key_Equals() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("co=unter", "302");
@@ -122,8 +123,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Value_Equals() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302=");
@@ -135,8 +136,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Key_Body() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302");
@@ -149,8 +150,8 @@ class message_builderTest {
 
     @Test
     void buildMessage_InvalidCharacterise_Value_Body() {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "body");
@@ -161,11 +162,11 @@ class message_builderTest {
     }
 
     //Helper
-    String getInet4AddressString() {
+    InetSocketAddress getOwnInet4Address(int port) {
         try {
-            String address = String.valueOf(Inet4Address.getLocalHost());
-            address = address.substring(address.indexOf("/"));
-            return address.substring(1);
+            String hostname = String.valueOf(Inet4Address.getLocalHost());
+            hostname = hostname.substring(hostname.indexOf("/"));
+            return new InetSocketAddress(hostname.substring(1), port) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -201,12 +202,13 @@ class message_builderTest {
     @Test
     void message_builder()
     {
-        InetSocketAddress sourceAddress = new InetSocketAddress(getInet4AddressString(), 8001);
-        InetSocketAddress destinationAddress = new InetSocketAddress(getInet4AddressString(), 8000);
+        InetSocketAddress sourceAddress = getOwnInet4Address(8001);
+        InetSocketAddress destinationAddress = getOwnInet4Address(8000);
         LinkedHashMap<String, String> body = new LinkedHashMap<>();
         body.put("name", "paul");
         body.put("counter", "302");
         body.put("test", "-1-2");
+        System.out.println(sourceAddress);
         String messageString = buildMessage("Test", sourceAddress, destinationAddress, body);
         message message = parseToEvent(messageString);
 

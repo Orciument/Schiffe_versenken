@@ -4,22 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Added sender.java">
-      <change afterPath="$PROJECT_DIR$/Server/src/main/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Added new Tests to message_builder. Upgraded to Java 17">
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/messageTimeoutCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/window.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="24LBu3bwxZMJhEP6L5CG9vSd4ic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -74,7 +77,7 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="12" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -91,7 +94,21 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.message_builderTest.buildMessage_Correct">
+    <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client" />
+      <module name="Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="serverMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="serverMain" />
+      <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="message_builderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Server" />
       <extension name="coverage">
@@ -109,9 +126,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="message_builderTest.buildMessage_Correct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="protocol.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.message_builderTest" />
+      <option name="METHOD_NAME" value="buildMessage_Correct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.message_builderTest.buildMessage_Correct" />
         <item itemvalue="JUnit.message_builderTest" />
+        <item itemvalue="Application.serverMain" />
+        <item itemvalue="Application.client" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643891378645</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added new Tests to message_builder. Upgraded to Java 17">
+      <created>1643911485000</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643911485000</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,7 +224,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -202,7 +245,8 @@
     <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
     <MESSAGE value="Added sender.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sender.java" />
+    <MESSAGE value="Added new Tests to message_builder. Upgraded to Java 17" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new Tests to message_builder. Upgraded to Java 17" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
