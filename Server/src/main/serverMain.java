@@ -1,14 +1,14 @@
 
 import data.dataHandler;
 import listener.*;
-import protocol.messageTimeoutCache;
+import protocol.messageEndpoint;
 
 public class serverMain {
 
     public static void main(String[] args) {
         //TODO Dialog Option, ob als Client, oder als Host gestartet werden soll
         dataHandler dataHandler = new dataHandler();
-        messageTimeoutCache messageTimeoutCache = new messageTimeoutCache();
+        new messageEndpoint(dataHandler);
         new acceptListener(dataHandler).start();
         new requestListener(dataHandler).start();
         new consoleListener(dataHandler).start();

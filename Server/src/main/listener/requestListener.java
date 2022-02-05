@@ -24,4 +24,8 @@ public class requestListener extends Thread {
 
     //TODO Bearbeitet alle Requests
     //Behandelt alle Request die eingehen, und bietet Methoden um diese zu beantworten
+    //TODO Empfangs Bestätigung
+    //TODO Place Ship
+    //TODO ERROR
+    //TODO Shot
 }

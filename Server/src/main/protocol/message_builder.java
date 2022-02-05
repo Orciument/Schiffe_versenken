@@ -1,5 +1,8 @@
 package protocol;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.Date;
@@ -9,6 +12,15 @@ public class message_builder {
 
     //Protokoll Version
     static String version = "0.1";
+/*
+    public static void buildMessage(DataOutputStream dataOutputStream, String type, SocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) throws IOException {
+        message message = new message(version,type,new Date(System.currentTimeMillis()), (InetSocketAddress) sourceAddress,destinationAddress,body);
+        messageTimeoutCache messageTimeoutCache = new messageTimeoutCache(dataHandler);
+        messageTimeoutCache.sent(message);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(dataOutputStream);
+        objectOutputStream.writeObject(message);
+    }
+
 
     public static String buildMessage(String type, SocketAddress sourceAddress, InetSocketAddress destinationAddress, LinkedHashMap<String, String> body) throws IllegalArgumentException {
         //Check for Illegal Arguments that could result in parsing Errors
@@ -151,4 +163,6 @@ public class message_builder {
         }
         return bodyHashMap;
     }
+
+    */
 }

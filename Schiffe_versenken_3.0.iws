@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Added new Tests to message_builder. Upgraded to Java 17">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener">
+      <change afterPath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/protocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/oldDEPRECATED/server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/messageTimeoutCache.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/messageTimeoutCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/window.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.message_builderTest.buildMessage_Correct">
+  <component name="RunManager" selected="Application.client">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
       <module name="Client" />
@@ -109,45 +105,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="message_builderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-16" />
-      <option name="PACKAGE_NAME" value="protocol" />
-      <option name="MAIN_CLASS_NAME" value="protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="message_builderTest.buildMessage_Correct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="protocol" />
-      <option name="MAIN_CLASS_NAME" value="protocol.message_builderTest" />
-      <option name="METHOD_NAME" value="buildMessage_Correct" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.message_builderTest.buildMessage_Correct" />
-        <item itemvalue="JUnit.message_builderTest" />
-        <item itemvalue="Application.serverMain" />
         <item itemvalue="Application.client" />
+        <item itemvalue="Application.serverMain" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643911485000</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener">
+      <created>1643999873985</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643999873986</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +214,8 @@
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
     <MESSAGE value="Added sender.java" />
     <MESSAGE value="Added new Tests to message_builder. Upgraded to Java 17" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new Tests to message_builder. Upgraded to Java 17" />
+    <MESSAGE value="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
