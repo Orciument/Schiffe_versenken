@@ -22,6 +22,7 @@ public class acceptListener extends Thread {
         while (dataHandler.getRUN()) {
             try {
                 Socket newClientSocket = dataHandler.getServerSocket().accept();
+                System.out.println("[ACCEPT] Client wants to Join, sent Identification Request");
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 messageEndpoint.sent("Identification Request", body, newClientSocket);
                 //TODO Client wird hinzugefügt, wenn der Request Listener sie überprüft, und nicht hier

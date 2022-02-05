@@ -18,6 +18,12 @@
         <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar" path-in-jar="/" />
       </root>
     </artifact>
+    <artifact type="jar" name="Client:jar">
+      <output-path>$PROJECT_DIR$/out/artifacts/Client_jar</output-path>
+      <root id="archive" name="Client.jar">
+        <element id="module-output" name="Client" />
+      </root>
+    </artifact>
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
