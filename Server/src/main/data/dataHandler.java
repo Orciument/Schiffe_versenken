@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class dataHandler {
     private final server server;
     private final ArrayList<client> clientArrayList = new ArrayList<>();
+    private final ArrayList<Socket> clientJoinList = new ArrayList<>();
 
     public dataHandler() {
         server = new server();
@@ -14,10 +15,8 @@ public class dataHandler {
 
 
     //Methode does not Validate if a Client should be allowed to be added to the game
-    public void addClient(Socket socket, String name) {
-
-        client newClient = new client(socket, name);
-        clientArrayList.add(newClient);
+    public void addClient(client client) {
+        clientArrayList.add(client);
         System.out.println("[Server] Neuer Client hinzugefügt");
     }
 
@@ -25,8 +24,8 @@ public class dataHandler {
         return server.getServerSocket();
     }
 
-    public client getClient(int index) {
-        return clientArrayList.get(index);
+    public ArrayList<client> getClientList() {
+        return clientArrayList;
     }
 
     public boolean getRUN() {
@@ -35,5 +34,19 @@ public class dataHandler {
 
     public void setRUN(boolean run) {
         server.setRun(run);
+    }
+
+    public int getGamestate()
+    {
+        return server.getGameState();
+    }
+
+    public void setGamestate(int gamestate)
+    {
+        server.setGameState(gamestate);
+    }
+
+    public ArrayList<Socket> getClientJoinList() {
+        return clientJoinList;
     }
 }
