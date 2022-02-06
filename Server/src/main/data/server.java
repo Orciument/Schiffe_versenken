@@ -25,8 +25,7 @@ public class server {
         try {
             hostname = Inet4Address.getLocalHost().toString();
         } catch (java.net.UnknownHostException e) {
-            e.printStackTrace();
-            //TODO Komischer return
+            run = false;
             return;
         }
         port = choosePort();
