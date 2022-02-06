@@ -10,7 +10,6 @@ public class serverMain {
         dataHandler dataHandler = new dataHandler();
         new messageEndpoint(dataHandler);
         new acceptListener(dataHandler).start();
-        new requestListener(dataHandler).start();
         new consoleListener(dataHandler).start();
     }
 }

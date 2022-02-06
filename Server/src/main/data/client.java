@@ -17,7 +17,7 @@ public class client {
         this.name = name;
     }
 
-    public Socket clientSocket() {
+    public Socket Socket() {
         return clientSocket;
     }
 

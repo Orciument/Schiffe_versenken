@@ -8,6 +8,7 @@ public class consoleListener extends Thread {
 
     public consoleListener(dataHandler dataHandler) {
         this.dataHandler = dataHandler;
+        Thread.currentThread().setName("consoleListener");
     }
 
     @Override

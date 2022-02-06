@@ -4,46 +4,54 @@ import java.io.IOException;
 import java.net.BindException;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
+import java.net.UnknownHostException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class server {
-    private ServerSocket serverSocket;
+    private static ServerSocket serverSocket;
     private boolean run = true;
-    int gameState = 0;
+    private int gameState = 0;
     /*
     0 = Vorm Spiel/Server Start
     1 = Vor der Runde, Joinen
     2 = In der Runde
     3 = Nach der Runde
     */
-    int clientIndexHasTurn = 0;
+    private int clientIndexHasTurn = 0;
 
     public server() {
         String hostname;
+        int port;
         try {
             hostname = Inet4Address.getLocalHost().toString();
         } catch (java.net.UnknownHostException e) {
-            e.printStackTrace();
+            //Returned, wenn keine IP Address gefunden werden konnte, und der Host somit vermutlich offline ist
+            run = false;
             return;
         }
+        port = choosePort();
+        hostname = hostname.substring(hostname.indexOf("/") + 1);
+        System.out.println("[Server] Started auf:");
+        System.out.println("         " + hostname + ":" + port);
+        gameState = 1;
+    }
 
+    private int choosePort() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("[Server] Bitte gebe den Port an: ");
-        int port = scanner.nextInt();
+        int port = 0;
         try {
+            port = scanner.nextInt();
             serverSocket = new ServerSocket(port);
-        } catch (BindException | IllegalArgumentException e) {
+        } catch (BindException | NoSuchElementException | IllegalArgumentException e) {
             System.out.println("[Server] Selected Port is invalid, please select a different Port");
-            scanner.close();
-            new server(); //Tries to open a new Server, in case the process has failed
+
+            return choosePort(); //Tries to open a new Server, in case the process has failed
         } catch (IOException e) {
             e.printStackTrace();
         }
-        hostname = hostname.substring(hostname.indexOf("/") + 1);
-        System.out.println("[Server] Started auf:");
-        System.out.println("[Server] IP:" + hostname);
-        System.out.println("[Server] Port: " + port);
-        gameState = 1;
+        return port;
     }
 
     public ServerSocket getServerSocket() {

@@ -13,15 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Replaced message_builder (and messageTimeoutCache) with messageEndpoint. The message is now sent using ObjektOutputStreams as Bits, rather than Strings">
-      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message_builder.java" beforeDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Finished acceptListener.java, added Thread names, and modified requestListener.java">
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/test/protocol/message_builderTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +51,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="24LBu3bwxZMJhEP6L5CG9vSd4ic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -70,13 +66,14 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="12" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -93,7 +90,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client">
+  <component name="RunManager" selected="Application.serverMain">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
       <module name="Client" />
@@ -114,8 +111,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.client" />
         <item itemvalue="Application.serverMain" />
+        <item itemvalue="Application.client" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +184,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644079125481</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finished acceptListener.java">
+      <created>1644087454759</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1644087454759</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Finished acceptListener.java, added Thread names, and modified requestListener.java">
+      <created>1644169443604</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644169443604</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +241,9 @@
     <MESSAGE value="Added new Tests to message_builder. Upgraded to Java 17" />
     <MESSAGE value="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener" />
     <MESSAGE value="Replaced message_builder (and messageTimeoutCache) with messageEndpoint. The message is now sent using ObjektOutputStreams as Bits, rather than Strings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replaced message_builder (and messageTimeoutCache) with messageEndpoint. The message is now sent using ObjektOutputStreams as Bits, rather than Strings" />
+    <MESSAGE value="Finished acceptListener.java" />
+    <MESSAGE value="Finished acceptListener.java, added Thread names, and modified requestListener.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished acceptListener.java, added Thread names, and modified requestListener.java" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
