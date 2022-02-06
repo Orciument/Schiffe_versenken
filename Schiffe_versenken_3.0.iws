@@ -13,10 +13,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Finished acceptListener.java, added Thread names, and modified requestListener.java">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Finished acceptListener.java">
+      <change afterPath="$PROJECT_DIR$/protocol/protocol.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,14 +195,7 @@
       <option name="project" value="LOCAL" />
       <updated>1644087454759</updated>
     </task>
-    <task id="LOCAL-00010" summary="Finished acceptListener.java, added Thread names, and modified requestListener.java">
-      <created>1644169443604</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1644169443604</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,8 +239,7 @@
     <MESSAGE value="Deleted old, deprecated Code. Started work on the messageTimeoutCache, and the acceptListener" />
     <MESSAGE value="Replaced message_builder (and messageTimeoutCache) with messageEndpoint. The message is now sent using ObjektOutputStreams as Bits, rather than Strings" />
     <MESSAGE value="Finished acceptListener.java" />
-    <MESSAGE value="Finished acceptListener.java, added Thread names, and modified requestListener.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished acceptListener.java, added Thread names, and modified requestListener.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished acceptListener.java" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

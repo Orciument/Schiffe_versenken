@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.BindException;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
-import java.net.UnknownHostException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -26,8 +25,8 @@ public class server {
         try {
             hostname = Inet4Address.getLocalHost().toString();
         } catch (java.net.UnknownHostException e) {
-            //Returned, wenn keine IP Address gefunden werden konnte, und der Host somit vermutlich offline ist
-            run = false;
+            e.printStackTrace();
+            //TODO Komischer return
             return;
         }
         port = choosePort();

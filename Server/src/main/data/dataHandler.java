@@ -10,9 +10,7 @@ public class dataHandler {
     private final ArrayList<Socket> clientJoinList = new ArrayList<>();
 
     public dataHandler() {
-
         server = new server();
-
     }
 
 
@@ -38,11 +36,13 @@ public class dataHandler {
         server.setRun(run);
     }
 
-    public int getGamestate() {
+    public int getGamestate()
+    {
         return server.getGameState();
     }
 
-    public void setGamestate(int gamestate) {
+    public void setGamestate(int gamestate)
+    {
         server.setGameState(gamestate);
     }
 
