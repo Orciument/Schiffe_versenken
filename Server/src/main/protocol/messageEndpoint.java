@@ -14,38 +14,11 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 public class messageEndpoint {
-    static final ArrayList<messagePackage> messageList = new ArrayList<>();
     static dataHandler dataHandler;
     static final String version = "0.1";
 
     public messageEndpoint(dataHandler dataHandler) {
         messageEndpoint.dataHandler = dataHandler;
-
-        new Thread(() -> {
-
-            while (dataHandler.getRUN()) {
-                if (messageList.size() > 0) {
-                    for (messagePackage messagePackage : messageList) {
-                        //Wenn das Senden der Nachricht über 10 Sekunden her ist, wird die nachricht erneut gesendet
-                        if (messagePackage.lastRetry + 10000 >= System.currentTimeMillis()) {
-                            if (messagePackage.retriesCounter < 3) {
-                                retry(messagePackage.message, messagePackage.socket);
-                            } else {
-                                //Wenn das erneut Senden 3-mal fehlgeschlagen hat, wird die Verbindung gekappt, und das Spiel wird geschlossen
-                                dataHandler.setRUN(false);
-                                try {
-                                    messagePackage.socket.close();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                        }
-                    }
-                }
-            }
-
-        }).start();
     }
 
     public static void sent(String type, LinkedHashMap<String, String> body, Socket socket) {
@@ -55,8 +28,6 @@ public class messageEndpoint {
 
         message message = new message(version, type, new Date(System.currentTimeMillis()), sourceAddress, destinationAddress, body);
 
-        //Add to messageList, for keeping track of send messages
-        messageList.add(new messagePackage(message, message.hashCode(), 0, System.currentTimeMillis(), socket));
         //Sent message to the Client
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -66,14 +37,6 @@ public class messageEndpoint {
         }
     }
 
-    private static void retry(message message, Socket socket) {
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            objectOutputStream.writeObject(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static message receive(DataInputStream inputStream) throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
@@ -92,13 +55,13 @@ public class messageEndpoint {
     }
 
     static class messagePackage {
-        private final protocol.message message;
+        private final message message;
         private final int hashcode;
         private final Socket socket;
         private int retriesCounter;
         private long lastRetry;
 
-        public messagePackage(protocol.message message, int hashcode, int retriesCounter, long lastRetry, Socket socket) {
+        public messagePackage(message message, int hashcode, int retriesCounter, long lastRetry, Socket socket) {
             this.message = message;
             this.hashcode = hashcode;
             this.retriesCounter = retriesCounter;
@@ -106,7 +69,7 @@ public class messageEndpoint {
             this.socket = socket;
         }
 
-        public protocol.message getMessage() {
+        public message getMessage() {
             return message;
         }
 

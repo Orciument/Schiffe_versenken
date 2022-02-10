@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.util.LinkedHashMap;
 
 public class acceptListener extends Thread {
-    final dataHandler dataHandler;
+    private final dataHandler dataHandler;
 
     public acceptListener(dataHandler dataHandler) {
         this.dataHandler = dataHandler;
@@ -41,7 +41,7 @@ public class acceptListener extends Thread {
         new Thread(() -> {
 
             DataInputStream dataInputStream;
-            message message = null;
+            message message;
             try {
                 //Get the Message from the newly connected client Socket
                 dataInputStream = (DataInputStream) socket.getInputStream();
@@ -51,9 +51,7 @@ public class acceptListener extends Thread {
 
                 //When the new Client sends Invalid information that cannot be decoded the connection is abandoned
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                //TODO Add Error Code to Body - message unreadable
-                body.put("answerTo", String.valueOf(message.hashCode()));
-
+                body.put("error", "message unreadable");
                 messageEndpoint.sent("Error", body, socket);
                 System.out.println("Failed to complete the connection for: "+ socket.getRemoteSocketAddress());
                 return;
@@ -61,10 +59,9 @@ public class acceptListener extends Thread {
 
             if (dataHandler.getGamestate() != 1)
             {
+                //If the game has already startet, the client isn't allowed to join the game and the connection is abandoned
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                //TODO Add Error Code to Body - not allowed to join at this stage
-                body.put("answerTo", String.valueOf(message.hashCode()));
-
+                body.put("error", "action not allowed at this moment");
                 messageEndpoint.sent("Error", body, socket);
                 System.out.println("Rejected Client because game has already startet: "+ socket.getRemoteSocketAddress());
                 return;
