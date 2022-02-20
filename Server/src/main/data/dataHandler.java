@@ -28,6 +28,16 @@ public class dataHandler {
         return clientArrayList;
     }
 
+    public client getOtherClient (client client)
+    {
+        int oldClientIndex = clientArrayList.indexOf(client);
+        if (oldClientIndex == clientArrayList.size())
+        {
+            return clientArrayList.get(0);
+        }
+        return clientArrayList.get(oldClientIndex+1);
+    }
+
     public boolean getRUN() {
         return server.getRun();
     }
@@ -36,13 +46,17 @@ public class dataHandler {
         server.setRun(run);
     }
 
-    public int getGamestate()
-    {
+    public int getGamestate() {
         return server.getGameState();
+        /*
+        0 = Vorm Spiel/Server Start
+        1 = Vor der Runde, Joinen
+        2 = In der Runde
+        3 = Nach der Runde
+        */
     }
 
-    public void setGamestate(int gamestate)
-    {
+    public void setGamestate(int gamestate) {
         server.setGameState(gamestate);
     }
 

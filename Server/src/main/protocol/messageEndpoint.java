@@ -39,8 +39,12 @@ public class messageEndpoint {
 
 
     public static message receive(DataInputStream inputStream) throws IOException, ClassNotFoundException {
+
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-        return (protocol.message) objectInputStream.readObject();
+        //TODO Catch Casting Error
+        message message = (message) objectInputStream.readObject();
+        //TODO Throw version Error
+        return message;
     }
 
     private static InetSocketAddress getOwnInet4Address(int port) {

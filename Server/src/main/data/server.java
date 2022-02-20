@@ -31,7 +31,8 @@ public class server {
         port = choosePort();
         hostname = hostname.substring(hostname.indexOf("/") + 1);
         System.out.println("[Server] Started auf:");
-        System.out.println("         " + hostname + ":" + port);
+        System.out.println(hostname + ":" + port);
+        System.out.println("----------------------");
         gameState = 1;
     }
 

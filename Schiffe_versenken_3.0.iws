@@ -14,14 +14,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Minor changes">
-      <change afterPath="$PROJECT_DIR$/Server/src/test/data/clientTest.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Work on requestListener, added a addShip function to client.java">
+      <change beforePath="$PROJECT_DIR$/Client/src/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +53,15 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="ae63dac0-7ac0-48c6-9df8-ba60b414d521" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Server/src/main/data/client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Server/src/main/listener/requestListener.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="24LBu3bwxZMJhEP6L5CG9vSd4ic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -95,7 +101,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.clientTest.addShip">
+  <component name="RunManager" selected="Application.client">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
       <module name="Client" />
@@ -106,19 +112,6 @@
     <configuration name="serverMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="serverMain" />
       <module name="Server" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="protocol.test" />
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,15 +135,13 @@
     <list>
       <item itemvalue="Application.serverMain" />
       <item itemvalue="Application.client" />
-      <item itemvalue="Application.test" />
       <item itemvalue="JUnit.clientTest.addShip" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.clientTest.addShip" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.serverMain" />
         <item itemvalue="Application.client" />
+        <item itemvalue="Application.serverMain" />
+        <item itemvalue="JUnit.clientTest.addShip" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644170926728</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Work on requestListener, added a addShip function to client.java">
+      <created>1644517396701</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1644517396702</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,7 +253,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -281,7 +279,8 @@
     <MESSAGE value="Replaced message_builder (and messageTimeoutCache) with messageEndpoint. The message is now sent using ObjektOutputStreams as Bits, rather than Strings" />
     <MESSAGE value="Finished acceptListener.java" />
     <MESSAGE value="Minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
+    <MESSAGE value="Work on requestListener, added a addShip function to client.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work on requestListener, added a addShip function to client.java" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -331,6 +331,8 @@ public class client {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    consoleListenerRun = false;
+                    networkListenerRun = false;
                 }
             }
         });
@@ -347,6 +349,8 @@ public class client {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    consoleListenerRun = false;
+                    networkListenerRun = false;
                 }
             }
         });

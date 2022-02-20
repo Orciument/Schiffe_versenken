@@ -44,7 +44,7 @@ public class acceptListener extends Thread {
             message message;
             try {
                 //Get the Message from the newly connected client Socket
-                dataInputStream = (DataInputStream) socket.getInputStream();
+                dataInputStream = new DataInputStream(socket.getInputStream());
                 message = messageEndpoint.receive(dataInputStream);
 
             } catch (IOException | ClassNotFoundException e) {

@@ -9,7 +9,6 @@ public class client {
 
     final String name;
     int[][] shipField = new int[10][10];
-    char[][] targetField = new char[10][10];
     int[] maxShips = {1, 2, 3, 4};
     int[] currentShips = new int[4];
 
@@ -82,14 +81,6 @@ public class client {
 
     public void setShipField(int[][] shipField) {
         this.shipField = shipField;
-    }
-
-    public char[][] targetField() {
-        return targetField;
-    }
-
-    public void setTargetField(char[][] targetField) {
-        this.targetField = targetField;
     }
 
     public int[] maxShips() {

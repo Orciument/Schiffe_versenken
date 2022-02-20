@@ -52,61 +52,78 @@ public class requestListener extends Thread {
                         System.out.println("Error: " + message.body().get("error"));
                     }
 
-                    //TODO PlaceShip-Request
                     case "PlaceShip-Request": {
                         if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("direction")) {
                             throw new IllegalArgumentException();
                         }
+                        if (dataHandler.getGamestate() != 1) {
+                            throw new RejectedExecutionException();
+                        }
 
-                        if (dataHandler.getGamestate() == 1) {
-                            int size = Integer.parseInt(message.body().get("size"));
-                            if (client.currentShips()[size] + 1 < client.maxShips()[size]) {
-                                //TODO Test if there is another ship in the way
-                                try {
-                                    client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("direction"));
-                                } catch (IllegalArgumentException e)
-                                {
-                                    LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                                    messageEndpoint.sent("error", body, client.Socket());
-                                } catch (RejectedExecutionException e)
-                                {
-                                    LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                                    messageEndpoint.sent("error", body, client.Socket());
-                                }
-
-
-                            } else {
-                                LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                                body.put("error", "you are not allowed to place more ships of this type");
-                                messageEndpoint.sent("error", body, client.Socket());
-                            }
-                        } else {
+                        int size = Integer.parseInt(message.body().get("size"));
+                        if (client.currentShips()[size] >= client.maxShips()[size]) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                            body.put("error", "action not allowed at this moment");
+                            body.put("error", "you are not allowed to place more ships of this type");
+                            messageEndpoint.sent("error", body, client.Socket());
+                            break;
+                        }
+
+                        try {
+                            client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("direction"));
+                        } catch (IllegalArgumentException e) {
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("error", "coordinates to place ship are wrongly defined");
+                            messageEndpoint.sent("error", body, client.Socket());
+                        } catch (RejectedExecutionException e) {
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("error", "cant place ship there, because there is already another ship there");
                             messageEndpoint.sent("error", body, client.Socket());
                         }
                     }
 
-                    //TODO messageReceived
-                    case "messageReceived": {
-
-                    }
-
-                    //TODO Shot-Request
                     case "Shot-Request": {
+                        if (!message.body().containsKey("x") || !message.body().containsKey("y")) {
+                            throw new IllegalArgumentException();
+                        }
+                        if (dataHandler.getGamestate() != 2) {
+                            throw new RejectedExecutionException();
+                        }
 
-                    }
+                        client adversary = dataHandler.getOtherClient(client);
+                        int[][] adversaryShipField = adversary.shipField();
+                        //b ≠ y -> b==0 is at the top
+                        int a = adversaryShipField[0].length - Integer.parseInt(message.body().get("y"));
+                        int b = Integer.parseInt(message.body().get("x"));
+                        b--;
 
-                    //TODO UpdateDisplay-Answer
-                    case "UpdateDisplay-Answer": {
+                        if (adversaryShipField[a][b] == 0) {
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("success", "false");
+                            messageEndpoint.sent("Shot-Answer", body, client.Socket());
+                        }
+                        if (adversaryShipField[a][b] > 0 || adversaryShipField[a][b] <= 4) {
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("success", "true");
+                            messageEndpoint.sent("Shot-Answer", body, client.Socket());
+                        }
+
+                        //TODO Update-Displays
+                        LinkedHashMap<String, String> body = new LinkedHashMap<>();
+
+                        messageEndpoint.sent("Update-Display", body, adversary.clientSocket());
 
                     }
                 }
+
             } catch (IllegalArgumentException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
                 messageEndpoint.sent("error", body, client.Socket());
                 return;
+            } catch (RejectedExecutionException e) {
+                LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                body.put("error", "action not allowed at this moment");
+                messageEndpoint.sent("error", body, client.Socket());
             }
 
         }
