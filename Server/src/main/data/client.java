@@ -8,9 +8,15 @@ public class client {
     final Socket clientSocket;
 
     final String name;
-    int[][] shipField = new int[10][10];
-    int[] maxShips = {1, 2, 3, 4};
+    char[][] shipField = new char[10][10];
+    /*
+    Does not say what ship there is, but only THAT there is one, or was one
+        'S'= Ship is there
+        'W'= Ship was there and was hit
+     */
+    final int[] maxShips = {1, 2, 3, 4};
     int[] currentShips = new int[4];
+    int lives;
 
     public void addShip(int size, int x, int y, String direction) throws RejectedExecutionException, IllegalArgumentException {
         //b ≠ y -> b==0 is at the top
@@ -33,29 +39,30 @@ public class client {
                     if (shipField[a - i][b] != 0) {
                         throw new RejectedExecutionException();
                     }
-                    shipField[a - i][b] = size;
+                    shipField[a - i][b] = 'S';
                 }
                 case "rechts", "right" -> {
                     if (shipField[a - i][b] != 0) {
                         throw new RejectedExecutionException();
                     }
-                    shipField[a][b + i] = size;
+                    shipField[a][b + i] = 'S';
                 }
                 case "links", "left" -> {
                     if (shipField[a - i][b] != 0) {
                         throw new RejectedExecutionException();
                     }
-                    shipField[a][b - i] = size;
+                    shipField[a][b - i] = 'S';
                 }
                 case "unten", "down" -> {
                     if (shipField[a - i][b] != 0) {
                         throw new RejectedExecutionException();
                     }
-                    shipField[a + i][b] = size;
+                    shipField[a + i][b] = 'S';
                 }
             }
         }
-        currentShips[size - 1]++;
+        lives+=size;
+        currentShips[size]++;
     }
 
     public client(Socket socket, String name) {
@@ -75,27 +82,23 @@ public class client {
         return clientSocket;
     }
 
-    public int[][] shipField() {
+    public char[][] shipField() {
         return shipField;
-    }
-
-    public void setShipField(int[][] shipField) {
-        this.shipField = shipField;
     }
 
     public int[] maxShips() {
         return maxShips;
     }
 
-    public void setMaxShips(int[] maxShips) {
-        this.maxShips = maxShips;
-    }
-
     public int[] currentShips() {
         return currentShips;
     }
 
-    public void setCurrentShips(int[] currentShips) {
-        this.currentShips = currentShips;
+    public int lives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
     }
 }

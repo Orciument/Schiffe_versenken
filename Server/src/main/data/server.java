@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class server {
     private static ServerSocket serverSocket;
     private boolean run = true;
-    private int gameState = 0;
+    private int gamePhase = 0;
     /*
     0 = Vorm Spiel/Server Start
     1 = Vor der Runde, Joinen
@@ -33,7 +33,7 @@ public class server {
         System.out.println("[Server] Started auf:");
         System.out.println(hostname + ":" + port);
         System.out.println("----------------------");
-        gameState = 1;
+        gamePhase = 1;
     }
 
     private int choosePort() {
@@ -61,8 +61,8 @@ public class server {
         return run;
     }
 
-    public int getGameState() {
-        return gameState;
+    public int getGamePhase() {
+        return gamePhase;
     }
 
     public int getClientIndexHasTurn() {
@@ -73,8 +73,8 @@ public class server {
         this.run = run;
     }
 
-    public void setGameState(int gameState) {
-        this.gameState = gameState;
+    public void setGamePhase(int gameState) {
+        this.gamePhase = gameState;
     }
 
     public void setClientIndexHasTurn(int clientIndexHasTurn) {

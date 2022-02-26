@@ -1,13 +1,11 @@
 package data;
 
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 public class dataHandler {
     private final server server;
     private final ArrayList<client> clientArrayList = new ArrayList<>();
-    private final ArrayList<Socket> clientJoinList = new ArrayList<>();
 
     public dataHandler() {
         server = new server();
@@ -24,18 +22,27 @@ public class dataHandler {
         return server.getServerSocket();
     }
 
-    public ArrayList<client> getClientList() {
-        return clientArrayList;
-    }
-
-    public client getOtherClient (client client)
-    {
+    public client getOtherClient (client client) {
         int oldClientIndex = clientArrayList.indexOf(client);
         if (oldClientIndex == clientArrayList.size())
         {
             return clientArrayList.get(0);
         }
         return clientArrayList.get(oldClientIndex+1);
+    }
+
+    public boolean allShipsPlaced() {
+        for (client client: clientArrayList)
+        {
+            for (int i: client.currentShips)
+            {
+                if(client.currentShips[i] != client.maxShips[i])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean getRUN() {
@@ -46,8 +53,8 @@ public class dataHandler {
         server.setRun(run);
     }
 
-    public int getGamestate() {
-        return server.getGameState();
+    public int getGamePhase() {
+        return server.getGamePhase();
         /*
         0 = Vorm Spiel/Server Start
         1 = Vor der Runde, Joinen
@@ -56,11 +63,13 @@ public class dataHandler {
         */
     }
 
-    public void setGamestate(int gamestate) {
-        server.setGameState(gamestate);
-    }
-
-    public ArrayList<Socket> getClientJoinList() {
-        return clientJoinList;
+    public void setGamePhase(int gamePhase) {
+        server.setGamePhase(gamePhase);
+        /*
+        0 = Vorm Spiel/Server Start
+        1 = Vor der Runde, Joinen
+        2 = In der Runde
+        3 = Nach der Runde
+        */
     }
 }
