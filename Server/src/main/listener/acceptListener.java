@@ -4,6 +4,8 @@ import data.client;
 import data.dataHandler;
 import protocol.message;
 import protocol.messageEndpoint;
+import resources.exceptions.MessageMissingArgumentsException;
+import resources.exceptions.MessageProtocolVersionIncompatible;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -57,7 +59,7 @@ public class acceptListener extends Thread {
 
                 //Check if the required Data is in the message
                 if (!message.body().containsKey("name")) {
-                    throw new IllegalArgumentException();
+                    throw new MessageMissingArgumentsException();
                 }
 
                 //Otherwise, a new client is added to the database
@@ -65,8 +67,15 @@ public class acceptListener extends Thread {
                 dataHandler.addClient(newClient);
                 new requestListener(dataHandler, newClient);
 
-            } catch (IOException | ClassNotFoundException | IllegalArgumentException e) {
-
+            } catch (IOException | ClassNotFoundException e) {
+                LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                body.put("error", "cant read message, fatal error");
+                messageEndpoint.sent("error", body, socket);
+            } catch (MessageProtocolVersionIncompatible e) {
+                LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                body.put("error", "Message Protocol Version incompatible");
+                messageEndpoint.sent("error", body, socket);
+            } catch (MessageMissingArgumentsException e) {
                 //When the new Client sends Invalid information that cannot be decoded the connection is abandoned
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");

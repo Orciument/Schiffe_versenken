@@ -1,6 +1,7 @@
 package protocol;
 
 import data.dataHandler;
+import resources.exceptions.*;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -37,12 +38,16 @@ public class messageEndpoint {
     }
 
 
-    public static message receive(DataInputStream inputStream) throws IOException, ClassNotFoundException {
+    public static message receive(DataInputStream inputStream) throws IOException, ClassNotFoundException, MessageProtocolVersionIncompatible {
 
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         //TODO Catch Casting Error
         message message = (message) objectInputStream.readObject();
         //TODO Throw version Error
+        if (!message.version().equals(version))
+        {
+            throw new MessageProtocolVersionIncompatible();
+        }
         return message;
     }
 
@@ -55,49 +60,5 @@ public class messageEndpoint {
             e.printStackTrace();
         }
         return null;
-    }
-
-    static class messagePackage {
-        private final message message;
-        private final int hashcode;
-        private final Socket socket;
-        private int retriesCounter;
-        private long lastRetry;
-
-        public messagePackage(message message, int hashcode, int retriesCounter, long lastRetry, Socket socket) {
-            this.message = message;
-            this.hashcode = hashcode;
-            this.retriesCounter = retriesCounter;
-            this.lastRetry = lastRetry;
-            this.socket = socket;
-        }
-
-        public message getMessage() {
-            return message;
-        }
-
-        public int getHashcode() {
-            return hashcode;
-        }
-
-        public int getRetriesCounter() {
-            return retriesCounter;
-        }
-
-        public long getLastRetry() {
-            return lastRetry;
-        }
-
-        public Socket getSocket() {
-            return socket;
-        }
-
-        public void setRetriesCounter(int retriesCounter) {
-            this.retriesCounter = retriesCounter;
-        }
-
-        public void setLastRetry(long lastRetry) {
-            this.lastRetry = lastRetry;
-        }
     }
 }

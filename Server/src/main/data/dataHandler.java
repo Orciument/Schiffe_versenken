@@ -72,4 +72,20 @@ public class dataHandler {
         3 = Nach der Runde
         */
     }
+
+    public boolean getIfClientHasTurn(client client) {
+        return clientArrayList.indexOf(client) == server.getClientIndexHasTurn();
+    }
+
+    public void changeClientIndexHasTurn()
+    {
+        if (server.getClientIndexHasTurn() == 0)
+        {
+            server.setClientIndexHasTurn(1);
+        }
+        if (server.getClientIndexHasTurn() == 1)
+        {
+            server.setClientIndexHasTurn(0);
+        }
+    }
 }

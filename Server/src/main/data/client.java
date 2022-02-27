@@ -1,7 +1,8 @@
 package data;
 
+import resources.exceptions.*;
+
 import java.net.Socket;
-import java.util.concurrent.RejectedExecutionException;
 
 public class client {
 
@@ -18,7 +19,7 @@ public class client {
     int[] currentShips = new int[4];
     int lives;
 
-    public void addShip(int size, int x, int y, String direction) throws RejectedExecutionException, IllegalArgumentException {
+    public void addShip(int size, int x, int y, String direction) throws ShipAlreadyThereException, IllegalArgumentException {
         //b ≠ y -> b==0 is at the top
         int a = shipField[0].length - y;
         int b = x;
@@ -37,25 +38,25 @@ public class client {
             switch (direction) {
                 case "oben", "up" -> {
                     if (shipField[a - i][b] != 0) {
-                        throw new RejectedExecutionException();
+                        throw new ShipAlreadyThereException();
                     }
                     shipField[a - i][b] = 'S';
                 }
                 case "rechts", "right" -> {
                     if (shipField[a - i][b] != 0) {
-                        throw new RejectedExecutionException();
+                        throw new ShipAlreadyThereException();
                     }
                     shipField[a][b + i] = 'S';
                 }
                 case "links", "left" -> {
                     if (shipField[a - i][b] != 0) {
-                        throw new RejectedExecutionException();
+                        throw new ShipAlreadyThereException();
                     }
                     shipField[a][b - i] = 'S';
                 }
                 case "unten", "down" -> {
                     if (shipField[a - i][b] != 0) {
-                        throw new RejectedExecutionException();
+                        throw new ShipAlreadyThereException();
                     }
                     shipField[a + i][b] = 'S';
                 }

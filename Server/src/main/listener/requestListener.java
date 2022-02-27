@@ -4,6 +4,7 @@ import data.client;
 import data.dataHandler;
 import protocol.message;
 import protocol.messageEndpoint;
+import resources.exceptions.*;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -37,25 +38,32 @@ public class requestListener extends Thread {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
                 messageEndpoint.sent("error", body, client.Socket());
-                return;
+                break;
+            } catch (MessageProtocolVersionIncompatible e) {
+                LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                body.put("error", "Message Protocol Version incompatible");
+                messageEndpoint.sent("error", body, client.Socket());
+                break;
             }
 
-
-            System.out.println("Validate Metadata");
-            System.out.println("Message Destination Address: " + message.destinationAddress());
-            System.out.println("Server Address: " + dataHandler.getServerSocket().getLocalSocketAddress());
             try {
+                if (message.type() == null || message.body() == null || message.version() == null) {
+                    throw new MessageMissingArgumentsException();
+                }
+
                 switch (message.type()) {
 
-                    //TODO Error
                     case "Error": {
+                        if (!message.body().containsKey("error")) {
+                            throw new MessageMissingArgumentsException();
+                        }
                         System.out.println("Error: " + message.body().get("error"));
                     }
 
                     case "PlaceShip-Request": {
                         //Checking for required Data
                         if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("orientation")) {
-                            throw new IllegalArgumentException();
+                            throw new MessageMissingArgumentsException();
                         }
                         //Prepare needed Data
                         int size = Integer.parseInt(message.body().get("size"));
@@ -83,7 +91,7 @@ public class requestListener extends Thread {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("error", "coordinates to place ship are wrongly defined");
                             messageEndpoint.sent("error", body, client.Socket());
-                        } catch (RejectedExecutionException e) {
+                        } catch (ShipAlreadyThereException e) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("error", "cant place ship there, because there is already another ship there");
                             messageEndpoint.sent("error", body, client.Socket());
@@ -93,17 +101,21 @@ public class requestListener extends Thread {
                         if (dataHandler.allShipsPlaced())
                         {
                             dataHandler.setGamePhase(2);
-                            //TODO Match-Start
+                            messageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
+                            messageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
                         }
                     }
 
                     case "Shot-Request": {
                         //Checking for required Data
                         if (!message.body().containsKey("x") || !message.body().containsKey("y")) {
-                            throw new IllegalArgumentException();
+                            throw new MessageMissingArgumentsException();
                         }
                         if (dataHandler.getGamePhase() != 2) {
-                            throw new RejectedExecutionException();
+                            throw new ActionNotAllowedNow("Can't shot in this GamePhase");
+                        }
+                        if (!dataHandler.getIfClientHasTurn(client)) {
+                            throw new RejectedExecutionException("Error: You are not on turn");
                         }
 
                         //Prepare needed Data
@@ -122,9 +134,9 @@ public class requestListener extends Thread {
                             messageEndpoint.sent("Shot-Answer", body, client.Socket());
 
                         }
-
                         if (adversaryShipField[a][b] == 'S') {
                             client.setLives(client.lives()-1);
+                            dataHandler.changeClientIndexHasTurn();
 
                             //Message to original Sender
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
@@ -139,25 +151,36 @@ public class requestListener extends Thread {
                             messageEndpoint.sent("Update-Display", body, adversary.clientSocket());
                         }
 
-                        if (adversary.lives() <= 0)
-                        {
+                        if (adversary.lives() <= 0) {
                             dataHandler.setGamePhase(3);
-                            //TODO GameEnd
+
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("winner", adversary.name());
+                            messageEndpoint.sent("Game-End", body, client.Socket());
+                            messageEndpoint.sent("Game-End", body, adversary.Socket());
+
+                            System.out.println("Game Ended");
+                            System.out.println("The winner is: "+ adversary.name());
+                            dataHandler.setRUN(false);
                         }
                     }
                 }
 
-            } catch (IllegalArgumentException e) {
+            } catch (MessageMissingArgumentsException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");
                 messageEndpoint.sent("error", body, client.Socket());
-                return;
-            } catch (RejectedExecutionException e) {
+            } catch (ActionNotAllowedNow e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "action not allowed at this moment");
                 messageEndpoint.sent("error", body, client.Socket());
             }
 
+        }
+        try {
+            client.clientSocket().close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
