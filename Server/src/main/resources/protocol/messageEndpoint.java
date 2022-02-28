@@ -1,4 +1,4 @@
-package protocol;
+package resources.protocol;
 
 import data.dataHandler;
 import resources.exceptions.*;

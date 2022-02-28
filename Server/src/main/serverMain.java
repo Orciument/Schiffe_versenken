@@ -1,6 +1,6 @@
 import data.dataHandler;
 import listener.*;
-import protocol.messageEndpoint;
+import resources.protocol.messageEndpoint;
 
 
 public class serverMain {

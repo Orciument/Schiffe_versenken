@@ -1,4 +1,4 @@
-package protocol;
+package resources.protocol;
 
 import java.io.Serializable;
 import java.net.InetSocketAddress;

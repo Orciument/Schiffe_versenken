@@ -2,8 +2,8 @@ package listener;
 
 import data.client;
 import data.dataHandler;
-import protocol.message;
-import protocol.messageEndpoint;
+import resources.protocol.message;
+import resources.protocol.messageEndpoint;
 import resources.exceptions.MessageMissingArgumentsException;
 import resources.exceptions.MessageProtocolVersionIncompatible;
 
