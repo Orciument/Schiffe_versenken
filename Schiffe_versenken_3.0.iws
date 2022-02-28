@@ -14,13 +14,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- Added custom Exceptions&#10;- Added GameState transitions">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="fixed imports">
+      <change afterPath="$PROJECT_DIR$/Client/src/clientMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/data/client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/data/dataHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/data/server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/listener/consoleListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/listener/requestListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/ressources/exceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,7 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -84,7 +91,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="12" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Client/src/ressources" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -92,6 +99,9 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Master\IdeaProjects\Schiffe_versenken_3.0\Client\src\ressources" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -102,10 +112,20 @@
       <recent name="protocol" />
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="listener" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.client">
+  <component name="RunManager" selected="Application.clientMain">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
+      <module name="Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="clientMain" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -138,14 +158,15 @@
       <item itemvalue="Application.serverMain" />
       <item itemvalue="Application.client" />
       <item itemvalue="JUnit.clientTest.addShip" />
+      <item itemvalue="Application.clientMain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.clientMain" />
         <item itemvalue="JUnit.clientTest.addShip" />
         <item itemvalue="Application.client" />
         <item itemvalue="Application.serverMain" />
         <item itemvalue="Application.client" />
-        <item itemvalue="Application.serverMain" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645973632388</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fixed imports">
+      <created>1646041128482</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1646041128482</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,7 +336,18 @@
     <MESSAGE value="Fixed Bugs/minor Changes in:&#10;server.java, dataHandler.java, client.java, acceptListener.java,&#10;Partially added a case for the Shot-Request in the requestListener.java" />
     <MESSAGE value="- Changed the client.shipField from an int[][] to a char[][] to ba able to track destroyed ships. &#10;- Added functional lives to the client, requestListener Shot-Request and placeShip-Request&#10;- removed Junk from dataHandler.java&#10;- added a containsKey braked in acceptListener.java and improved the error messages" />
     <MESSAGE value="- Added custom Exceptions&#10;- Added GameState transitions" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added custom Exceptions&#10;- Added GameState transitions" />
+    <MESSAGE value="fixed imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed imports" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
