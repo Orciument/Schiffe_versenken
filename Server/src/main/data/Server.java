@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class server {
+public class Server {
     private static ServerSocket serverSocket;
     private boolean run = true;
     private int gamePhase = 0;
@@ -19,7 +19,7 @@ public class server {
     */
     private int clientIndexHasTurn = 0;
 
-    public server() {
+    public Server() {
         String hostname;
         int port;
         try {

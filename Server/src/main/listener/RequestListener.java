@@ -1,25 +1,27 @@
 package listener;
 
-import data.client;
-import data.dataHandler;
-import resources.protocol.message;
-import resources.protocol.messageEndpoint;
-import resources.exceptions.*;
+import data.Client;
+import data.DataHandler;
+import ressources.Exceptions.ActionNotAllowedNow;
+import ressources.Exceptions.MessageMissingArgumentsException;
+import ressources.Exceptions.MessageProtocolVersionIncompatible;
+import ressources.Exceptions.ShipAlreadyThereException;
+import ressources.protocol.Message;
+import ressources.protocol.MessageEndpoint;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.concurrent.RejectedExecutionException;
 
-public class requestListener extends Thread {
+public class RequestListener extends Thread {
 
-    final dataHandler dataHandler;
-    final client client;
+    final DataHandler dataHandler;
+    final Client client;
 
-    public requestListener(dataHandler dataHandler, data.client client) {
+    public RequestListener(DataHandler dataHandler, Client client) {
         this.dataHandler = dataHandler;
         this.client = client;
-        Thread.currentThread().setName("requestListener for Client: " + client.name());
     }
 
     @Override
@@ -28,21 +30,22 @@ public class requestListener extends Thread {
     }
 
     private void listener() {
+        Thread.currentThread().setName("requestListener for Client: " + client.name());
         while (dataHandler.getRUN()) {
             DataInputStream dataInputStream;
-            message message;
+            Message message;
             try {
-                dataInputStream = (DataInputStream) client.Socket().getInputStream();
-                message = messageEndpoint.receive(dataInputStream);
+                dataInputStream = new DataInputStream(client.clientSocket().getInputStream());
+                message = MessageEndpoint.receive(dataInputStream);
             } catch (IOException | ClassNotFoundException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
-                messageEndpoint.sent("error", body, client.Socket());
+                MessageEndpoint.sent("error", body, client.clientSocket());
                 break;
             } catch (MessageProtocolVersionIncompatible e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "Message Protocol Version incompatible");
-                messageEndpoint.sent("error", body, client.Socket());
+                MessageEndpoint.sent("error", body, client.clientSocket());
                 break;
             }
 
@@ -73,7 +76,7 @@ public class requestListener extends Thread {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
                             body.put("message", "you are not allowed to place a ships in this state of the game");
-                            messageEndpoint.sent("PlaceShip-Answer", body, client.Socket());
+                            MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                             break;
                         }
 
@@ -81,28 +84,31 @@ public class requestListener extends Thread {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
                             body.put("message", "you are not allowed to place more ships of this type");
-                            messageEndpoint.sent("PlaceShip-Answer", body, client.Socket());
+                            MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                             break;
                         }
 
                         try {
                             client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
+                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            body.put("success", "true");
+                            body.put("message", "");
+                            MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                         } catch (IllegalArgumentException e) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("error", "coordinates to place ship are wrongly defined");
-                            messageEndpoint.sent("error", body, client.Socket());
+                            MessageEndpoint.sent("error", body, client.clientSocket());
                         } catch (ShipAlreadyThereException e) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("error", "cant place ship there, because there is already another ship there");
-                            messageEndpoint.sent("error", body, client.Socket());
+                            MessageEndpoint.sent("error", body, client.clientSocket());
                         }
 
                         //Check if the next phase of the game can start
-                        if (dataHandler.allShipsPlaced())
-                        {
+                        if (dataHandler.allShipsPlaced()) {
                             dataHandler.setGamePhase(2);
-                            messageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
-                            messageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
+                            MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
+                            MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
                         }
                     }
 
@@ -119,7 +125,7 @@ public class requestListener extends Thread {
                         }
 
                         //Prepare needed Data
-                        client adversary = dataHandler.getOtherClient(client);
+                        Client adversary = dataHandler.getOtherClient(client);
                         char[][] adversaryShipField = adversary.shipField();
                         //b ≠ y -> b==0 is at the top
                         int a = adversaryShipField[0].length - Integer.parseInt(message.body().get("y"));
@@ -131,24 +137,24 @@ public class requestListener extends Thread {
                             //Message to original Sender
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
-                            messageEndpoint.sent("Shot-Answer", body, client.Socket());
+                            MessageEndpoint.sent("Shot-Answer", body, client.clientSocket());
 
                         }
                         if (adversaryShipField[a][b] == 'S') {
-                            client.setLives(client.lives()-1);
+                            client.setLives(client.lives() - 1);
                             dataHandler.changeClientIndexHasTurn();
 
                             //Message to original Sender
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "true");
-                            messageEndpoint.sent("Shot-Answer", body, client.Socket());
+                            MessageEndpoint.sent("Shot-Answer", body, client.clientSocket());
 
                             //Message to adversary
                             body = new LinkedHashMap<>();
                             body.put("type", "hit");
                             body.put("x", message.body().get("x"));
                             body.put("y", message.body().get("y"));
-                            messageEndpoint.sent("Update-Display", body, adversary.clientSocket());
+                            MessageEndpoint.sent("Update-Display", body, adversary.clientSocket());
                         }
 
                         if (adversary.lives() <= 0) {
@@ -156,11 +162,11 @@ public class requestListener extends Thread {
 
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("winner", adversary.name());
-                            messageEndpoint.sent("Game-End", body, client.Socket());
-                            messageEndpoint.sent("Game-End", body, adversary.Socket());
+                            MessageEndpoint.sent("Game-End", body, client.clientSocket());
+                            MessageEndpoint.sent("Game-End", body, adversary.clientSocket());
 
                             System.out.println("Game Ended");
-                            System.out.println("The winner is: "+ adversary.name());
+                            System.out.println("The winner is: " + adversary.name());
                             dataHandler.setRUN(false);
                         }
                     }
@@ -169,11 +175,11 @@ public class requestListener extends Thread {
             } catch (MessageMissingArgumentsException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");
-                messageEndpoint.sent("error", body, client.Socket());
+                MessageEndpoint.sent("error", body, client.clientSocket());
             } catch (ActionNotAllowedNow e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "action not allowed at this moment");
-                messageEndpoint.sent("error", body, client.Socket());
+                MessageEndpoint.sent("error", body, client.clientSocket());
             }
 
         }

@@ -14,19 +14,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="fixed imports">
-      <change afterPath="$PROJECT_DIR$/Client/src/clientMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/data/client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/data/dataHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/data/server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/listener/consoleListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/listener/requestListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ressources/exceptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Start work on the Client">
+      <change afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/dataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/requestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/ConsoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +69,8 @@
     <option name="defaultAccountId" value="ae63dac0-7ac0-48c6-9df8-ba60b414d521" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Server/src/main/data/client.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Server/src/main/listener/requestListener.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Server/src/main/data/Client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -116,7 +122,7 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.clientMain">
+  <component name="RunManager" selected="Application.serverMain">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
       <module name="Client" />
@@ -157,15 +163,15 @@
     <list>
       <item itemvalue="Application.serverMain" />
       <item itemvalue="Application.client" />
-      <item itemvalue="JUnit.clientTest.addShip" />
       <item itemvalue="Application.clientMain" />
+      <item itemvalue="JUnit.clientTest.addShip" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.clientMain" />
+        <item itemvalue="Application.serverMain" />
         <item itemvalue="JUnit.clientTest.addShip" />
         <item itemvalue="Application.client" />
-        <item itemvalue="Application.serverMain" />
         <item itemvalue="Application.client" />
       </list>
     </recent_temporary>
@@ -287,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646041128482</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Start work on the Client">
+      <created>1646050701924</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1646050701924</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,7 +350,8 @@
     <MESSAGE value="- Changed the client.shipField from an int[][] to a char[][] to ba able to track destroyed ships. &#10;- Added functional lives to the client, requestListener Shot-Request and placeShip-Request&#10;- removed Junk from dataHandler.java&#10;- added a containsKey braked in acceptListener.java and improved the error messages" />
     <MESSAGE value="- Added custom Exceptions&#10;- Added GameState transitions" />
     <MESSAGE value="fixed imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed imports" />
+    <MESSAGE value="Start work on the Client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start work on the Client" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

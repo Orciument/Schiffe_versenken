@@ -1,12 +1,12 @@
 package listener;
 
-import data.dataHandler;
+import data.DataHandler;
 
-public class consoleListener extends Thread {
+public class ConsoleListener extends Thread {
 
-    final dataHandler dataHandler;
+    final DataHandler dataHandler;
 
-    public consoleListener(dataHandler dataHandler) {
+    public ConsoleListener(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
         Thread.currentThread().setName("consoleListener");
     }

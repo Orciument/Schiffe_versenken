@@ -18,7 +18,7 @@ public class client {
         System.out.println("Name bestätigt: " + name);
 
         socket = connect(socket);
-        System.out.println(socket.isConnected());
+        //TODO Send
     }
 
     private Socket connect(Socket socket) {

@@ -1,16 +1,16 @@
-import data.dataHandler;
+import data.DataHandler;
 import listener.*;
-import resources.protocol.messageEndpoint;
+import ressources.protocol.MessageEndpoint;
 
 
 public class serverMain {
 
     public static void main(String[] args) {
         //Dialog Option, ob als Client, oder als Host gestartet werden soll
-        dataHandler dataHandler = new dataHandler();
+        DataHandler dataHandler = new DataHandler();
         //noinspection InstantiationOfUtilityClass
-        new messageEndpoint(dataHandler);
-        new acceptListener(dataHandler).start();
-        new consoleListener(dataHandler).start();
+        new MessageEndpoint(dataHandler);
+        new AcceptListener(dataHandler).start();
+        new ConsoleListener(dataHandler).start();
     }
 }

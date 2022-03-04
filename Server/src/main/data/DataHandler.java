@@ -3,17 +3,17 @@ package data;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
-public class dataHandler {
-    private final server server;
-    private final ArrayList<client> clientArrayList = new ArrayList<>();
+public class DataHandler {
+    private final Server server;
+    private final ArrayList<Client> clientArrayList = new ArrayList<>();
 
-    public dataHandler() {
-        server = new server();
+    public DataHandler() {
+        server = new Server();
     }
 
 
     //Methode does not Validate if a Client should be allowed to be added to the game
-    public void addClient(client client) {
+    public void addClient(Client client) {
         clientArrayList.add(client);
         System.out.println("[Server] Neuer Client hinzugefügt");
     }
@@ -22,7 +22,7 @@ public class dataHandler {
         return server.getServerSocket();
     }
 
-    public client getOtherClient (client client) {
+    public Client getOtherClient (Client client) {
         int oldClientIndex = clientArrayList.indexOf(client);
         if (oldClientIndex == clientArrayList.size())
         {
@@ -32,7 +32,7 @@ public class dataHandler {
     }
 
     public boolean allShipsPlaced() {
-        for (client client: clientArrayList)
+        for (Client client: clientArrayList)
         {
             for (int i: client.currentShips)
             {
@@ -73,7 +73,7 @@ public class dataHandler {
         */
     }
 
-    public boolean getIfClientHasTurn(client client) {
+    public boolean getIfClientHasTurn(Client client) {
         return clientArrayList.indexOf(client) == server.getClientIndexHasTurn();
     }
 

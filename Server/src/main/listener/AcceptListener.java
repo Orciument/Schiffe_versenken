@@ -1,21 +1,21 @@
 package listener;
 
-import data.client;
-import data.dataHandler;
-import resources.protocol.message;
-import resources.protocol.messageEndpoint;
-import resources.exceptions.MessageMissingArgumentsException;
-import resources.exceptions.MessageProtocolVersionIncompatible;
+import data.Client;
+import data.DataHandler;
+import ressources.protocol.Message;
+import ressources.protocol.MessageEndpoint;
+import ressources.Exceptions.MessageMissingArgumentsException;
+import ressources.Exceptions.MessageProtocolVersionIncompatible;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.LinkedHashMap;
 
-public class acceptListener extends Thread {
-    private final dataHandler dataHandler;
+public class AcceptListener extends Thread {
+    private final DataHandler dataHandler;
 
-    public acceptListener(dataHandler dataHandler) {
+    public AcceptListener(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
         Thread.currentThread().setName("acceptListener");
     }
@@ -30,7 +30,7 @@ public class acceptListener extends Thread {
             try {
                 Socket newClientSocket = dataHandler.getServerSocket().accept();
                 System.out.println("[ACCEPT] Client wants to Join, sent Identification Request");
-                messageEndpoint.sent("Identification-Request", new LinkedHashMap<>(), newClientSocket);
+                MessageEndpoint.sent("Identification-Request", new LinkedHashMap<>(), newClientSocket);
                 waitForIdentificationAnswer(newClientSocket);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -42,17 +42,19 @@ public class acceptListener extends Thread {
         new Thread(() -> {
 
             DataInputStream dataInputStream;
-            message message;
+            Message message;
             try {
                 //Get the Message from the newly connected client Socket
                 dataInputStream = new DataInputStream(socket.getInputStream());
-                message = messageEndpoint.receive(dataInputStream);
+                System.out.println(1);
+                message = MessageEndpoint.receive(dataInputStream);
+                System.out.println(2);
 
                 //If the game has already startet, the client isn't allowed to join the game and the connection is abandoned
                 if (dataHandler.getGamePhase() != 1) {
                     LinkedHashMap<String, String> body = new LinkedHashMap<>();
                     body.put("error", "action not allowed at this moment");
-                    messageEndpoint.sent("error", body, socket);
+                    MessageEndpoint.sent("error", body, socket);
                     System.out.println("Rejected Client because game has already startet: " + socket.getRemoteSocketAddress());
                     return;
                 }
@@ -63,25 +65,26 @@ public class acceptListener extends Thread {
                 }
 
                 //Otherwise, a new client is added to the database
-                client newClient = new client(socket, message.body().get("name"));
+                System.out.println("Client hinzugefügt");
+                Client newClient = new Client(socket, message.body().get("name"));
                 dataHandler.addClient(newClient);
-                new requestListener(dataHandler, newClient);
+                new RequestListener(dataHandler, newClient);
 
             } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "cant read message, fatal error");
-                messageEndpoint.sent("error", body, socket);
+                MessageEndpoint.sent("error", body, socket);
             } catch (MessageProtocolVersionIncompatible e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "Message Protocol Version incompatible");
-                messageEndpoint.sent("error", body, socket);
+                MessageEndpoint.sent("error", body, socket);
             } catch (MessageMissingArgumentsException e) {
                 //When the new Client sends Invalid information that cannot be decoded the connection is abandoned
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");
-                messageEndpoint.sent("error", body, socket);
+                MessageEndpoint.sent("error", body, socket);
                 System.out.println("Failed to complete the connection for: " + socket.getRemoteSocketAddress());
-                return;
             }
         }, "Thread: waitForIdentificationAnswer: " + socket.getRemoteSocketAddress()).start();
     }

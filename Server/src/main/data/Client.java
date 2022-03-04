@@ -1,10 +1,10 @@
 package data;
 
-import resources.exceptions.*;
+import ressources.Exceptions.*;
 
 import java.net.Socket;
 
-public class client {
+public class Client {
 
     final Socket clientSocket;
 
@@ -66,13 +66,9 @@ public class client {
         currentShips[size]++;
     }
 
-    public client(Socket socket, String name) {
+    public Client(Socket socket, String name) {
         clientSocket = socket;
         this.name = name;
-    }
-
-    public Socket Socket() {
-        return clientSocket;
     }
 
     public String name() {
