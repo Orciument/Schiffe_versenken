@@ -1,22 +1,22 @@
 package listener;
 
-import data.client;
-import data.dataHandler;
-import ressources.exceptions.MessageMissingArgumentsException;
-import ressources.exceptions.MessageProtocolVersionIncompatible;
+import data.Client;
+import data.DataHandler;
+import ressources.Exceptions.MessageMissingArgumentsException;
+import ressources.Exceptions.MessageProtocolVersionIncompatible;
 import ressources.protocol.Message;
-import ressources.protocol.messageEndpoint;
+import ressources.protocol.MessageEndpoint;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
-public class requestListener extends Thread {
+public class RequestListener extends Thread {
 
-    final dataHandler dataHandler;
-    final client client;
+    final DataHandler dataHandler;
+    final Client client;
 
-    public requestListener(dataHandler dataHandler) {
+    public RequestListener(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
         this.client = dataHandler.getClient();
     }
@@ -33,16 +33,16 @@ public class requestListener extends Thread {
             Message message;
             try {
                 dataInputStream = new DataInputStream(client.socket().getInputStream());
-                message = messageEndpoint.receive(dataInputStream);
+                message = MessageEndpoint.receive(dataInputStream);
             } catch (IOException | ClassNotFoundException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
-                messageEndpoint.sent("error", body, client.socket());
+                MessageEndpoint.sent("error", body, client.socket());
                 break;
             } catch (MessageProtocolVersionIncompatible e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "Message Protocol Version incompatible");
-                messageEndpoint.sent("error", body, client.socket());
+                MessageEndpoint.sent("error", body, client.socket());
                 break;
             }
 
@@ -62,16 +62,20 @@ public class requestListener extends Thread {
 
                         //Process Data
                         System.out.println("Error: " + message.body().get("error"));
+                        break;
                     }
+
                     case "Identification-Request": {
                         //Answer to Client
                         LinkedHashMap<String, String> body = new LinkedHashMap<>();
                         body.put("name", client.name());
-                        messageEndpoint.sent("Identification-Answer", body, client.socket());
+                        MessageEndpoint.sent("Identification-Answer", body, client.socket());
+                        break;
                     }
+
                     case "PlaceShip-Answer": {
                         //Checking for required Data
-                        if (message.body().containsKey("success") || message.body().containsKey("message")) {
+                        if (!message.body().containsKey("success") || !message.body().containsKey("message")) {
                             throw new MessageMissingArgumentsException();
                         }
 
@@ -81,15 +85,19 @@ public class requestListener extends Thread {
                         } else {
                             System.out.println("Schiff konnte nicht platter werden: " + message.body().get("message"));
                         }
+                        break;
                     }
+
                     case "Match-Start": {
                         //Process Data
                         dataHandler.setGameState(2);
                         System.out.println("Match beginnt...");
+                        break;
                     }
+
                     case "Shot-Answer": {
                         //Checking for required Data
-                        if (message.body().containsKey("success")) {
+                        if (!message.body().containsKey("success")) {
                             throw new MessageMissingArgumentsException();
                         }
 
@@ -100,10 +108,14 @@ public class requestListener extends Thread {
                         else {
                             System.out.println("Nichts getroffen :(");
                         }
+                        break;
                     }
+
                     case "Update-Display": {
                         //TODO Print booth fields
+                        break;
                     }
+
                     case "Game-End": {
                         //Checking for required Data
                         if (!message.body().containsKey("winner")) {
@@ -114,13 +126,14 @@ public class requestListener extends Thread {
                         dataHandler.setGameState(3);
                         System.out.println("Spiel ist vorbei...");
                         System.out.println("\"" + message.body().get("winner") + "\" hat gewonnen!");
+                        break;
                     }
                 }
 
             } catch (MessageMissingArgumentsException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");
-                messageEndpoint.sent("error", body, client.socket());
+                MessageEndpoint.sent("error", body, client.socket());
             }
 
         }

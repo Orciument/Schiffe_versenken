@@ -24,7 +24,7 @@ public class MessageEndpoint {
         //Sent message to the Client
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("Sent Message: " + message);
+            System.out.println("[Endpoint Sent] " + message);
             objectOutputStream.writeObject(message);
             //TODO Unable to send the message, please mix
             //Maybe with a String and message.toString system
@@ -39,15 +39,13 @@ public class MessageEndpoint {
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         //TODO Catch Casting Error
         Object o = objectInputStream.readObject();
-        System.out.println(o == null);
-        System.out.println(o.getClass());
-        Message message = (Message) objectInputStream.readObject();
+        Message message = (Message) o;
         //TODO Throw version Error
         if (!message.version().equals(version))
         {
             throw new MessageProtocolVersionIncompatible();
         }
-        System.out.println("received Message: " + message);
+        System.out.println("[Endpoint Received] " + message);
         return message;
     }
 }

@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
 
-public class client {
+public class Client {
     Socket socket = new Socket();
     String name;
     char[][] shipField = new char[10][10];
     char[][] targetField = new char[10][10];
 
-    public client() {
+    public Client() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Bitte gebe einen Spieler Namen ein:");
@@ -18,13 +18,12 @@ public class client {
         System.out.println("Name bestätigt: " + name);
 
         socket = connect(socket);
-        //TODO Send
     }
 
     private Socket connect(Socket socket) {
         Scanner scanner = new Scanner(System.in);
         String hostname;
-        int port = 0;
+        int port;
 
         System.out.println("Bitte geben sie die Server Adresse ein: ");
         String input = scanner.nextLine();
@@ -50,7 +49,7 @@ public class client {
 
         } else {
             //Input is IPV6
-            InetAddress inetAddress = null;
+            InetAddress inetAddress;
             try {
                 inetAddress = Inet6Address.getByName(input);
                 port = Integer.parseInt(inetAddress.toString().substring(inetAddress.toString().lastIndexOf(":") + 1));

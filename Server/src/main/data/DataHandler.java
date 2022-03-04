@@ -15,7 +15,7 @@ public class DataHandler {
     //Methode does not Validate if a Client should be allowed to be added to the game
     public void addClient(Client client) {
         clientArrayList.add(client);
-        System.out.println("[Server] Neuer Client hinzugefügt");
+        System.out.println("[Server] Neuer Client hinzugefügt: " + client.name);
     }
 
     public ServerSocket getServerSocket() {

@@ -14,25 +14,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="Start work on the Client">
-      <change afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="zwischen Stand, alles brocken">
       <change beforePath="$PROJECT_DIR$/Client/src/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/dataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/requestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/messageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/dataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/acceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/ConsoleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/requestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/protocol/messageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/serverMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +112,7 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.serverMain">
+  <component name="RunManager" selected="Application.clientMain">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client" />
       <module name="Client" />
@@ -300,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646050701924</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="zwischen Stand, alles brocken">
+      <created>1646415130689</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1646415130689</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,7 +348,8 @@
     <MESSAGE value="- Added custom Exceptions&#10;- Added GameState transitions" />
     <MESSAGE value="fixed imports" />
     <MESSAGE value="Start work on the Client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start work on the Client" />
+    <MESSAGE value="zwischen Stand, alles brocken" />
+    <option name="LAST_COMMIT_MESSAGE" value="zwischen Stand, alles brocken" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -29,7 +29,7 @@ public class AcceptListener extends Thread {
         while (dataHandler.getRUN()) {
             try {
                 Socket newClientSocket = dataHandler.getServerSocket().accept();
-                System.out.println("[ACCEPT] Client wants to Join, sent Identification Request");
+                System.out.println("[ACCEPT] Client wants to Join, sent Identification Request now");
                 MessageEndpoint.sent("Identification-Request", new LinkedHashMap<>(), newClientSocket);
                 waitForIdentificationAnswer(newClientSocket);
             } catch (Exception e) {
@@ -46,9 +46,7 @@ public class AcceptListener extends Thread {
             try {
                 //Get the Message from the newly connected client Socket
                 dataInputStream = new DataInputStream(socket.getInputStream());
-                System.out.println(1);
                 message = MessageEndpoint.receive(dataInputStream);
-                System.out.println(2);
 
                 //If the game has already startet, the client isn't allowed to join the game and the connection is abandoned
                 if (dataHandler.getGamePhase() != 1) {
@@ -65,7 +63,6 @@ public class AcceptListener extends Thread {
                 }
 
                 //Otherwise, a new client is added to the database
-                System.out.println("Client hinzugefügt");
                 Client newClient = new Client(socket, message.body().get("name"));
                 dataHandler.addClient(newClient);
                 new RequestListener(dataHandler, newClient);
