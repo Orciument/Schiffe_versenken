@@ -8,7 +8,7 @@ public class DataHandler {
     public DataHandler() {
         server = new Server();
         client = new Client();
-        if (client.name.equalsIgnoreCase("debug")) {
+        if (client.name().equalsIgnoreCase("debug")) {
             debug = true;
         }
         setGameState(1);

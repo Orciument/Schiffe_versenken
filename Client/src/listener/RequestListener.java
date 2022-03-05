@@ -4,6 +4,7 @@ import data.Client;
 import data.DataHandler;
 import ressources.Exceptions.MessageMissingArgumentsException;
 import ressources.Exceptions.MessageProtocolVersionIncompatible;
+import ressources.Display;
 import ressources.protocol.Message;
 import ressources.protocol.MessageEndpoint;
 
@@ -70,6 +71,8 @@ public class RequestListener extends Thread {
                         LinkedHashMap<String, String> body = new LinkedHashMap<>();
                         body.put("name", client.name());
                         MessageEndpoint.sent("Identification-Answer", body, client.socket());
+
+                        Display.update();
                         break;
                     }
 
@@ -112,7 +115,22 @@ public class RequestListener extends Thread {
                     }
 
                     case "Update-Display": {
-                        //TODO Print booth fields
+                        //Checking for required Data
+                        //TODO Change Data
+                        if (!message.body().containsKey("type") || !message.body().containsKey("x") || !message.body().containsKey("y")) {
+                            throw new MessageMissingArgumentsException();
+                        }
+
+
+                        //Prepare needed Data
+                        //b ≠ y -> b==0 is at the top
+                        int a = dataHandler.getClient().shipField()[0].length - Integer.parseInt(message.body().get("y"));
+                        int b = Integer.parseInt(message.body().get("x"));
+
+                        //Process Data
+                        dataHandler.getClient().shipField()[a][b] = 'w';
+
+                        Display.update();
                         break;
                     }
 

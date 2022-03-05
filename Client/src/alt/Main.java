@@ -1,3 +1,5 @@
+package alt;
+
 import java.awt.*;
 import java.io.Console;
 import java.io.IOException;

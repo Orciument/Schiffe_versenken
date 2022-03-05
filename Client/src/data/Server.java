@@ -2,7 +2,7 @@ package data;
 
 import java.util.Objects;
 
-public final class server {
+public final class Server {
     private int gameState; /*
     0 = Vorm Spiel/Server Start
     1 = Vor der Runde, Joinen
@@ -10,7 +10,7 @@ public final class server {
     3 = Nach der Runde */
     private boolean run;
 
-    public server() {
+    public Server() {
         gameState = 0;
         run = true;
     }
@@ -35,7 +35,7 @@ public final class server {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (server) obj;
+        var that = (Server) obj;
         return this.gameState == that.gameState &&
                 this.run == that.run;
     }

@@ -1,3 +1,5 @@
+package alt;
+
 import javax.swing.*;
 import java.awt.*;
 

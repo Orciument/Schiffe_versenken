@@ -143,6 +143,7 @@ public class RequestListener extends Thread {
                         if (adversaryShipField[a][b] == 'S') {
                             client.setLives(client.lives() - 1);
                             dataHandler.changeClientIndexHasTurn();
+                            adversaryShipField[a][b] = 'w';
 
                             //Message to original Sender
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();

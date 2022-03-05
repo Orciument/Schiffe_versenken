@@ -1,6 +1,6 @@
 package ressources;
 
-public class exceptions {
+public class Exceptions {
     static public class MessageMissingArgumentsException extends Exception {
         public MessageMissingArgumentsException() {
         }

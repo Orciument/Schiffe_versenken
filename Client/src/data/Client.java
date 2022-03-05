@@ -2,13 +2,15 @@ package data;
 
 import java.io.IOException;
 import java.net.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
-    Socket socket = new Socket();
-    String name;
-    char[][] shipField = new char[10][10];
-    char[][] targetField = new char[10][10];
+    private Socket socket = new Socket();
+    private final String name;
+    private final char[][] shipField = new char[10][10];
+    private final char[][] targetField = new char[10][10];
+    private boolean onTurn;
 
     public Client() {
         Scanner scanner = new Scanner(System.in);
@@ -18,6 +20,9 @@ public class Client {
         System.out.println("Name bestätigt: " + name);
 
         socket = connect(socket);
+
+        fillField(targetField);
+        fillField(shipField);
     }
 
     private Socket connect(Socket socket) {
@@ -85,6 +90,12 @@ public class Client {
         return port;
     }
 
+    private void fillField(char[][] field) {
+        for (char[] chars : field) {
+            Arrays.fill(chars, '0');
+        }
+    }
+
     public Socket socket() {
         return socket;
     }
@@ -100,4 +111,14 @@ public class Client {
     public char[][] targetField() {
         return targetField;
     }
+
+    public boolean onTurn() {
+        return onTurn;
+    }
+
+    public void setOnTurn(boolean onTurn) {
+        this.onTurn = onTurn;
+    }
+
+
 }
