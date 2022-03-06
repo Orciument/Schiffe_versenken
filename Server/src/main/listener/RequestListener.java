@@ -50,6 +50,7 @@ public class RequestListener extends Thread {
             }
 
             try {
+                //Checking for required Data
                 if (message.type() == null || message.body() == null || message.version() == null) {
                     throw new MessageMissingArgumentsException();
                 }
@@ -57,10 +58,12 @@ public class RequestListener extends Thread {
                 switch (message.type()) {
 
                     case "Error": {
+                        //Checking for required Data
                         if (!message.body().containsKey("error")) {
                             throw new MessageMissingArgumentsException();
                         }
                         System.out.println("Error: " + message.body().get("error"));
+                        break;
                     }
 
                     case "PlaceShip-Request": {
@@ -80,7 +83,7 @@ public class RequestListener extends Thread {
                             break;
                         }
 
-                        if (client.currentShips()[size] >= client.maxShips()[size]) {
+                        if (client.currentShips()[size-1] >= client.maxShips()[size-1]) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
                             body.put("message", "you are not allowed to place more ships of this type");
@@ -90,7 +93,9 @@ public class RequestListener extends Thread {
 
                         try {
                             client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
-                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+
+                            //Reuse the old body, because the client doesn't save where to place to ship
+                            LinkedHashMap<String, String> body = message.body();
                             body.put("success", "true");
                             body.put("message", "");
                             MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
@@ -110,6 +115,7 @@ public class RequestListener extends Thread {
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
                         }
+                        break;
                     }
 
                     case "Shot-Request": {
@@ -146,7 +152,8 @@ public class RequestListener extends Thread {
                             adversaryShipField[a][b] = 'w';
 
                             //Message to original Sender
-                            LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                            //Reuse the old body, because the client doesn't save where it has shot
+                            LinkedHashMap<String, String> body = message.body();
                             body.put("success", "true");
                             MessageEndpoint.sent("Shot-Answer", body, client.clientSocket());
 
@@ -162,7 +169,7 @@ public class RequestListener extends Thread {
                             dataHandler.setGamePhase(3);
 
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                            body.put("winner", adversary.name());
+                            body.put("winner", adversary.name().toString());
                             MessageEndpoint.sent("Game-End", body, client.clientSocket());
                             MessageEndpoint.sent("Game-End", body, adversary.clientSocket());
 
@@ -170,6 +177,7 @@ public class RequestListener extends Thread {
                             System.out.println("The winner is: " + adversary.name());
                             dataHandler.setRUN(false);
                         }
+                        break;
                     }
                 }
 

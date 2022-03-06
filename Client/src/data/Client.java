@@ -1,5 +1,7 @@
 package data;
 
+import ressources.Exceptions.ShipAlreadyThereException;
+
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
@@ -93,6 +95,84 @@ public class Client {
     private void fillField(char[][] field) {
         for (char[] chars : field) {
             Arrays.fill(chars, '0');
+        }
+    }
+
+    public void addWreck(int x, int y) {
+        //b ≠ y -> b==0 is at the top
+        int a = shipField[0].length - y;
+        int b = x;
+        b--;
+
+        //Exceptions
+        if (shipField.length < a) {
+            throw new IllegalArgumentException("Unexpected value: " + a);
+        } else if (shipField[0].length < b) {
+            throw new IllegalArgumentException("Unexpected value: " + b);
+        }
+
+        shipField[a][b] = 'W';
+    }
+
+    public void addHit(int x, int y) {
+        //b ≠ y -> b==0 is at the top
+        int a = targetField[0].length - y;
+        int b = x;
+        b--;
+
+        //Exceptions
+        if (targetField.length < a) {
+            throw new IllegalArgumentException("Unexpected value: " + a);
+        } else if (targetField[0].length < b) {
+            throw new IllegalArgumentException("Unexpected value: " + b);
+        }
+
+        targetField[a][b] = 'X';
+    }
+
+
+    public void addShip(int size, int x, int y, String direction) throws ShipAlreadyThereException, IllegalArgumentException {
+        //b ≠ y -> b==0 is at the top
+        int a = shipField[0].length - y;
+        int b = x;
+        b--;
+
+        //Exceptions
+        if (shipField.length < a) {
+            throw new IllegalArgumentException("Unexpected value: " + a);
+        } else if (shipField[0].length < b) {
+            throw new IllegalArgumentException("Unexpected value: " + b);
+        } else if (size < 1 || size > 4) {
+            throw new IllegalArgumentException("Unexpected value: " + size);
+        }
+
+        for (int i = 0; i < size; i++) {
+            switch (direction) {
+                case "oben", "up" -> {
+                    if (shipField[a - i][b] != '0') {
+                        throw new ShipAlreadyThereException();
+                    }
+                    shipField[a - i][b] = Character.forDigit(size,10);
+                }
+                case "rechts", "right" -> {
+                    if (shipField[a - i][b] != '0') {
+                        throw new ShipAlreadyThereException();
+                    }
+                    shipField[a][b + i] = Character.forDigit(size,10);
+                }
+                case "links", "left" -> {
+                    if (shipField[a - i][b] != '0') {
+                        throw new ShipAlreadyThereException();
+                    }
+                    shipField[a][b - i] = Character.forDigit(size,10);
+                }
+                case "unten", "down" -> {
+                    if (shipField[a - i][b] != '0') {
+                        throw new ShipAlreadyThereException();
+                    }
+                    shipField[a + i][b] = Character.forDigit(size,10);
+                }
+            }
         }
     }
 

@@ -65,7 +65,7 @@ public class AcceptListener extends Thread {
                 //Otherwise, a new client is added to the database
                 Client newClient = new Client(socket, message.body().get("name"));
                 dataHandler.addClient(newClient);
-                new RequestListener(dataHandler, newClient);
+                new RequestListener(dataHandler, newClient).start();
 
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

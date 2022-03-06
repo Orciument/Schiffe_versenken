@@ -2,6 +2,7 @@ package listener;
 
 import data.Client;
 import data.DataHandler;
+import ressources.Exceptions;
 import ressources.Exceptions.MessageMissingArgumentsException;
 import ressources.Exceptions.MessageProtocolVersionIncompatible;
 import ressources.Display;
@@ -39,15 +40,18 @@ public class RequestListener extends Thread {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
                 MessageEndpoint.sent("error", body, client.socket());
+                e.printStackTrace();
                 break;
             } catch (MessageProtocolVersionIncompatible e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "Message Protocol Version incompatible");
                 MessageEndpoint.sent("error", body, client.socket());
+                e.printStackTrace();
                 break;
             }
 
             try {
+                //Checking for required Data
                 if (message.type() == null || message.body() == null || message.version() == null) {
                     throw new MessageMissingArgumentsException();
                 }
@@ -84,10 +88,22 @@ public class RequestListener extends Thread {
 
                         //Process Data
                         if (Boolean.parseBoolean(message.body().get("success"))) {
-                            System.out.println("Schiff erfolgreich Passiert");
+                            //Checking for required Data
+                            if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("orientation")) {
+                                throw new MessageMissingArgumentsException();
+                            }
+                            try {
+                                client.addShip(Integer.parseInt(message.body().get("size")), Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
+                            } catch (Exceptions.ShipAlreadyThereException e) {
+                                e.printStackTrace();
+                            }
+
+                            System.out.println("Schiff erfolgreich platziert!");
                         } else {
                             System.out.println("Schiff konnte nicht platter werden: " + message.body().get("message"));
                         }
+
+                        Display.update();
                         break;
                     }
 
@@ -95,6 +111,8 @@ public class RequestListener extends Thread {
                         //Process Data
                         dataHandler.setGameState(2);
                         System.out.println("Match beginnt...");
+
+                        Display.update();
                         break;
                     }
 
@@ -106,11 +124,18 @@ public class RequestListener extends Thread {
 
                         //Process Data
                         if (Boolean.parseBoolean(message.body().get("success"))) {
+                            //Checking for required Data
+                            if(!message.body().containsKey("x") | !message.body().containsKey("y")) {
+                                throw new MessageMissingArgumentsException();
+                            }
+                            client.addHit(Integer.parseInt(message.body().get("x")),Integer.parseInt(message.body().get("y")));
                             System.out.println("Schiff getroffen!");
                         }
                         else {
                             System.out.println("Nichts getroffen :(");
                         }
+
+                        Display.update();
                         break;
                     }
 

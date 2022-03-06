@@ -1,6 +1,6 @@
 package data;
 
-import ressources.Exceptions.*;
+import ressources.Exceptions.ShipAlreadyThereException;
 
 import java.net.Socket;
 
@@ -62,8 +62,8 @@ public class Client {
                 }
             }
         }
-        lives+=size;
-        currentShips[size]++;
+        lives += size;
+        currentShips[size - 1]++;
     }
 
     public Client(Socket socket, String name) {
@@ -71,7 +71,7 @@ public class Client {
         this.name = name;
     }
 
-    public String name() {
+    public Object name() {
         return name;
     }
 

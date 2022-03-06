@@ -14,25 +14,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- Fixed Errors in the last Commit&#10;- changed naming structure&#10;- worked on the requestListener.java">
-      <change afterPath="$PROJECT_DIR$/Client/src/ressources/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/alt/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/alt/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/clientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/clientMain.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- ConsoleListener angefangen">
       <change beforePath="$PROJECT_DIR$/Client/src/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/data/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/listener/consoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/ressources/exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/window.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/alt/window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +92,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -122,7 +112,7 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.serverMain">
+  <component name="RunManager" selected="Application.clientMain">
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="alt.client" />
       <module name="Client" />
@@ -161,9 +151,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.serverMain" />
-      <item itemvalue="Application.client" />
       <item itemvalue="Application.clientMain" />
+      <item itemvalue="Application.client" />
+      <item itemvalue="Application.serverMain" />
       <item itemvalue="JUnit.clientTest.addShip" />
     </list>
     <recent_temporary>
@@ -171,7 +161,6 @@
         <item itemvalue="Application.clientMain" />
         <item itemvalue="Application.serverMain" />
         <item itemvalue="JUnit.clientTest.addShip" />
-        <item itemvalue="Application.client" />
         <item itemvalue="Application.client" />
       </list>
     </recent_temporary>
@@ -314,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646417499255</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="- ConsoleListener angefangen">
+      <created>1646504404222</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1646504404222</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,7 +363,8 @@
     <MESSAGE value="Start work on the Client" />
     <MESSAGE value="zwischen Stand, alles brocken" />
     <MESSAGE value="- Fixed Errors in the last Commit&#10;- changed naming structure&#10;- worked on the requestListener.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed Errors in the last Commit&#10;- changed naming structure&#10;- worked on the requestListener.java" />
+    <MESSAGE value="- ConsoleListener angefangen" />
+    <option name="LAST_COMMIT_MESSAGE" value="- ConsoleListener angefangen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
