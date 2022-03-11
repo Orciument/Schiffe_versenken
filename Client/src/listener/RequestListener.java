@@ -150,7 +150,7 @@ public class RequestListener extends Thread {
                         //Prepare needed Data
                         //b ≠ y -> b==0 is at the top
                         int a = dataHandler.getClient().shipField()[0].length - Integer.parseInt(message.body().get("y"));
-                        int b = Integer.parseInt(message.body().get("x"));
+                        int b = Integer.parseInt(message.body().get("x")) -1;
 
                         //Process Data
                         dataHandler.getClient().shipField()[a][b] = 'w';

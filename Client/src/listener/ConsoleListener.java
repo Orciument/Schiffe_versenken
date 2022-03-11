@@ -104,6 +104,7 @@ public class ConsoleListener extends Thread {
 
                         break;
                     }
+                    //TODO Default Error
                 }
             }
         }

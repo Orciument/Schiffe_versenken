@@ -3,6 +3,8 @@ package data;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
+import static ressources.DebugOut.debugOut;
+
 public class DataHandler {
     private final Server server;
     private final ArrayList<Client> clientArrayList = new ArrayList<>();
@@ -15,29 +17,25 @@ public class DataHandler {
     //Methode does not Validate if a Client should be allowed to be added to the game
     public void addClient(Client client) {
         clientArrayList.add(client);
-        System.out.println("[Server] Neuer Client hinzugefügt: " + client.name);
+        debugOut("[Server] Neuer Client hinzugefügt: " + client.name);
     }
 
     public ServerSocket getServerSocket() {
         return server.getServerSocket();
     }
 
-    public Client getOtherClient (Client client) {
-        int oldClientIndex = clientArrayList.indexOf(client);
-        if (oldClientIndex == clientArrayList.size())
-        {
+    public Client getOtherClient(Client client) {
+        if (clientArrayList.indexOf(client) == 1) {
             return clientArrayList.get(0);
+        } else {
+            return clientArrayList.get(1);
         }
-        return clientArrayList.get(oldClientIndex+1);
     }
 
     public boolean allShipsPlaced() {
-        for (Client client: clientArrayList)
-        {
-            for (int i: client.currentShips)
-            {
-                if(client.currentShips[i] != client.maxShips[i])
-                {
+        for (Client client : clientArrayList) {
+            for (int i = 0; i < client.currentShips.length; i++) {
+                if (client.currentShips[i] != client.maxShips[i]) {
                     return false;
                 }
             }
@@ -77,15 +75,17 @@ public class DataHandler {
         return clientArrayList.indexOf(client) == server.getClientIndexHasTurn();
     }
 
-    public void changeClientIndexHasTurn()
-    {
-        if (server.getClientIndexHasTurn() == 0)
-        {
+    public void changeClientIndexHasTurn() {
+        System.out.println(server.getClientIndexHasTurn());
+        if (server.getClientIndexHasTurn() == 0) {
             server.setClientIndexHasTurn(1);
-        }
-        if (server.getClientIndexHasTurn() == 1)
-        {
+        } else {
             server.setClientIndexHasTurn(0);
         }
+        System.out.println(server.getClientIndexHasTurn());
+    }
+
+    public int getClientCount() {
+        return clientArrayList.size();
     }
 }

@@ -155,19 +155,19 @@ public class Client {
                     shipField[a - i][b] = Character.forDigit(size,10);
                 }
                 case "rechts", "right" -> {
-                    if (shipField[a - i][b] != '0') {
+                    if (shipField[a][b + i] != '0') {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a][b + i] = Character.forDigit(size,10);
                 }
                 case "links", "left" -> {
-                    if (shipField[a - i][b] != '0') {
+                    if (shipField[a][b - i] != '0') {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a][b - i] = Character.forDigit(size,10);
                 }
                 case "unten", "down" -> {
-                    if (shipField[a - i][b] != '0') {
+                    if (shipField[a + i][b] != '0') {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a + i][b] = Character.forDigit(size,10);

@@ -15,7 +15,7 @@ public class Client {
         'S'= Ship is there
         'W'= Ship was there and was hit
      */
-    final int[] maxShips = {1, 2, 3, 4};
+    final int[] maxShips = {0,0,0,1};
     int[] currentShips = new int[4];
     int lives;
 
@@ -30,7 +30,7 @@ public class Client {
             throw new IllegalArgumentException("Unexpected value: " + a);
         } else if (shipField[0].length < b) {
             throw new IllegalArgumentException("Unexpected value: " + b);
-        } else if (size < 1 || size > 4) {
+        } else if (size < 1 | size > 4) {
             throw new IllegalArgumentException("Unexpected value: " + size);
         }
 
@@ -43,19 +43,19 @@ public class Client {
                     shipField[a - i][b] = 'S';
                 }
                 case "rechts", "right" -> {
-                    if (shipField[a - i][b] != 0) {
+                    if (shipField[a][b + i] != 0) {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a][b + i] = 'S';
                 }
                 case "links", "left" -> {
-                    if (shipField[a - i][b] != 0) {
+                    if (shipField[a][b - i] != 0) {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a][b - i] = 'S';
                 }
                 case "unten", "down" -> {
-                    if (shipField[a - i][b] != 0) {
+                    if (shipField[a + i][b] != 0) {
                         throw new ShipAlreadyThereException();
                     }
                     shipField[a + i][b] = 'S';

@@ -1,7 +1,8 @@
 package ressources.protocol;
 
 import data.DataHandler;
-import ressources.Exceptions.*;
+import ressources.Exceptions.MessageProtocolVersionIncompatible;
+import static ressources.DebugOut.debugOut;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.LinkedHashMap;
 
 public class MessageEndpoint {
     static DataHandler dataHandler;
-    static final String version = "0.1";
+    static final String version = "1.0";
 
     public MessageEndpoint(DataHandler dataHandler) {
         MessageEndpoint.dataHandler = dataHandler;
@@ -24,7 +25,7 @@ public class MessageEndpoint {
         //Sent message to the Client
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("[Endpoint Sent] " + message);
+            debugOut("[Endpoint Sent] " + message);
             objectOutputStream.writeObject(message);
             //TODO Unable to send the message, please mix
             //Maybe with a String and message.toString system
@@ -41,11 +42,12 @@ public class MessageEndpoint {
         Object o = objectInputStream.readObject();
         Message message = (Message) o;
         //TODO Throw version Error
-        if (!message.version().equals(version))
-        {
+        if (!message.version().equals(version)) {
             throw new MessageProtocolVersionIncompatible();
         }
-        System.out.println("[Endpoint Received] " + message);
+        debugOut("[Endpoint Received] " + message);
         return message;
     }
+
+
 }

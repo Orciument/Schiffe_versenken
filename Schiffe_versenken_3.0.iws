@@ -14,15 +14,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- ConsoleListener angefangen">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- entered a kind of beta">
+      <change afterPath="$PROJECT_DIR$/Client/src/ressources/DebugOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/ressources/DebugOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/clientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ressources/protocol/MessageEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/serverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +100,11 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="12" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Client/src/ressources" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.packagesearch.PackageSearchGeneralConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -109,59 +121,62 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ressources" />
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.clientMain">
-    <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="alt.client" />
+  <component name="RunManager" selected="Application.Main (2)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="clientMain" />
+    <configuration name="Main (2)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="serverMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="serverMain" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clientTest.addShip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="data" />
-      <option name="MAIN_CLASS_NAME" value="data.clientTest" />
-      <option name="METHOD_NAME" value="addShip" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.clientMain" />
-      <item itemvalue="Application.client" />
-      <item itemvalue="Application.serverMain" />
-      <item itemvalue="JUnit.clientTest.addShip" />
+      <item itemvalue="Application.Main (2)" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.clientMain" />
-        <item itemvalue="Application.serverMain" />
-        <item itemvalue="JUnit.clientTest.addShip" />
-        <item itemvalue="Application.client" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646504404222</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="- ConsoleListener fertig bis auf Help&#10;- fixed various critical bugs, fixed the not starting RequestListener&#10;- reached alpha">
+      <created>1646580084413</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1646580084413</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +386,9 @@
     <MESSAGE value="zwischen Stand, alles brocken" />
     <MESSAGE value="- Fixed Errors in the last Commit&#10;- changed naming structure&#10;- worked on the requestListener.java" />
     <MESSAGE value="- ConsoleListener angefangen" />
-    <option name="LAST_COMMIT_MESSAGE" value="- ConsoleListener angefangen" />
+    <MESSAGE value="- ConsoleListener fertig bis auf Help&#10;- fixed various critical bugs, fixed the not starting RequestListener&#10;- reached alpha" />
+    <MESSAGE value="- entered a kind of beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="- entered a kind of beta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -375,6 +399,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.LinkedHashMap;
 
+import static ressources.DebugOut.debugOut;
+
 public class AcceptListener extends Thread {
     private final DataHandler dataHandler;
 
@@ -29,7 +31,7 @@ public class AcceptListener extends Thread {
         while (dataHandler.getRUN()) {
             try {
                 Socket newClientSocket = dataHandler.getServerSocket().accept();
-                System.out.println("[ACCEPT] Client wants to Join, sent Identification Request now");
+                debugOut("[ACCEPT] Client wants to Join, sent Identification Request now");
                 MessageEndpoint.sent("Identification-Request", new LinkedHashMap<>(), newClientSocket);
                 waitForIdentificationAnswer(newClientSocket);
             } catch (Exception e) {
@@ -53,8 +55,13 @@ public class AcceptListener extends Thread {
                     LinkedHashMap<String, String> body = new LinkedHashMap<>();
                     body.put("error", "action not allowed at this moment");
                     MessageEndpoint.sent("error", body, socket);
-                    System.out.println("Rejected Client because game has already startet: " + socket.getRemoteSocketAddress());
+                    debugOut("[Accept] Rejected Client because game has already startet: " + socket.getRemoteSocketAddress());
                     return;
+                } else if(dataHandler.getClientCount() >= 2) {
+                    LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                    body.put("error", "no more than 2 Clients allowed");
+                    MessageEndpoint.sent("error", body, socket);
+                    debugOut("[Accept] Rejected Client because game has already 2 Clients: " + socket.getRemoteSocketAddress());
                 }
 
                 //Check if the required Data is in the message
@@ -81,7 +88,7 @@ public class AcceptListener extends Thread {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable, or missing key Arguments");
                 MessageEndpoint.sent("error", body, socket);
-                System.out.println("Failed to complete the connection for: " + socket.getRemoteSocketAddress());
+                debugOut("[Accept] Failed to complete the connection for: " + socket.getRemoteSocketAddress());
             }
         }, "Thread: waitForIdentificationAnswer: " + socket.getRemoteSocketAddress()).start();
     }

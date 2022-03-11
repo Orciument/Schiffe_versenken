@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
+
+import static ressources.DebugOut.debugOut;
 
 public class MessageEndpoint {
     static DataHandler dataHandler;
-    static final String version = "0.1";
+    static final String version = "1.0";
 
     public MessageEndpoint(DataHandler dataHandler) {
         MessageEndpoint.dataHandler = dataHandler;
@@ -44,14 +45,5 @@ public class MessageEndpoint {
         }
         debugOut("[Endpoint Received] " + message);
         return message;
-    }
-
-    public static void debugOut(String... strings) {
-        if (dataHandler.debug())
-        {
-            String arrayString = Arrays.toString(strings);
-            arrayString = arrayString.substring(1, arrayString.length()-1);
-            System.out.println(arrayString);
-        }
     }
 }

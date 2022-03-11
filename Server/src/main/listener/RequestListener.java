@@ -71,6 +71,8 @@ public class RequestListener extends Thread {
                         if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("orientation")) {
                             throw new MessageMissingArgumentsException();
                         }
+                        //TODO Validate that all arguments are valid. No size = 5, no x = 11
+
                         //Prepare needed Data
                         int size = Integer.parseInt(message.body().get("size"));
 
@@ -82,7 +84,7 @@ public class RequestListener extends Thread {
                             MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                             break;
                         }
-
+                        //TODO Führt zu fehler wenn man 5 als size angibt, weil hier vor kein error checking ist
                         if (client.currentShips()[size-1] >= client.maxShips()[size-1]) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
@@ -110,7 +112,7 @@ public class RequestListener extends Thread {
                         }
 
                         //Check if the next phase of the game can start
-                        if (dataHandler.allShipsPlaced()) {
+                        if (dataHandler.getClientCount() == 2 && dataHandler.allShipsPlaced()) {
                             dataHandler.setGamePhase(2);
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
@@ -128,6 +130,7 @@ public class RequestListener extends Thread {
                         }
                         if (!dataHandler.getIfClientHasTurn(client)) {
                             throw new RejectedExecutionException("Error: You are not on turn");
+                            //TODO Catch this exception
                         }
 
                         //Prepare needed Data
@@ -139,15 +142,20 @@ public class RequestListener extends Thread {
                         b--;
 
                         //Process Information and Answer to Client
+                        //Shot is valid but missed
                         if (adversaryShipField[a][b] != 'S') {
                             //Message to original Sender
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
                             MessageEndpoint.sent("Shot-Answer", body, client.clientSocket());
+                            dataHandler.changeClientIndexHasTurn();
 
                         }
+                        //Shot is valid and hit
                         if (adversaryShipField[a][b] == 'S') {
-                            client.setLives(client.lives() - 1);
+                            System.out.println("vorher"+ client.lives());
+                            adversary.setLives(adversary.lives() - 1);
+                            System.out.println("nachher"+ client.lives());
                             dataHandler.changeClientIndexHasTurn();
                             adversaryShipField[a][b] = 'w';
 
@@ -165,11 +173,12 @@ public class RequestListener extends Thread {
                             MessageEndpoint.sent("Update-Display", body, adversary.clientSocket());
                         }
 
+                        //Game should be over now, because all ships are completely destroyed
                         if (adversary.lives() <= 0) {
                             dataHandler.setGamePhase(3);
 
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                            body.put("winner", adversary.name().toString());
+                            body.put("winner", client.name().toString());
                             MessageEndpoint.sent("Game-End", body, client.clientSocket());
                             MessageEndpoint.sent("Game-End", body, adversary.clientSocket());
 
@@ -188,6 +197,10 @@ public class RequestListener extends Thread {
             } catch (ActionNotAllowedNow e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "action not allowed at this moment");
+                MessageEndpoint.sent("error", body, client.clientSocket());
+            } catch(RejectedExecutionException e) {
+                LinkedHashMap<String, String> body = new LinkedHashMap<>();
+                body.put("error", e.getLocalizedMessage());
                 MessageEndpoint.sent("error", body, client.clientSocket());
             }
 
