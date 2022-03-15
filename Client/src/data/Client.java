@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
-    private Socket socket = new Socket();
+    private Socket socket;
     private final String name;
     private final char[][] shipField = new char[10][10];
     private final char[][] targetField = new char[10][10];
@@ -21,16 +21,28 @@ public class Client {
         name = scanner.nextLine();
         System.out.println("Name bestätigt: " + name);
 
-        socket = connect(socket);
+
+        socket = connect();
 
         fillField(targetField);
         fillField(shipField);
     }
 
-    private Socket connect(Socket socket) {
+    private Socket connect() {
+        Socket socket = new Socket();
         Scanner scanner = new Scanner(System.in);
         String hostname;
         int port;
+
+        try {
+            socket.bind(new InetSocketAddress(9000));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(socket.getInetAddress());
+        System.out.println(socket.getRemoteSocketAddress());
+        System.out.println(socket.getLocalAddress());
+        System.out.println(socket.getLocalSocketAddress());
 
         System.out.println("Bitte geben sie die Server Adresse ein: ");
         String input = scanner.nextLine();
@@ -47,11 +59,16 @@ public class Client {
             }
             try {
                 socket.connect(new InetSocketAddress(hostname, port));
+                System.out.println(socket.getInetAddress());
+                System.out.println(socket.getRemoteSocketAddress());
+                System.out.println(socket.getLocalAddress());
+                System.out.println(socket.getLocalSocketAddress());
                 return socket;
 
             } catch (IOException e) {
                 System.out.println("Error, failed to establish connection");
-                connect(socket);
+                e.printStackTrace();
+                connect();
             }
 
         } else {
@@ -59,19 +76,18 @@ public class Client {
             InetAddress inetAddress;
             try {
                 inetAddress = Inet6Address.getByName(input);
-                port = Integer.parseInt(inetAddress.toString().substring(inetAddress.toString().lastIndexOf(":") + 1));
-
+                port = choosePort();
                 try {
 
-                    socket.connect(new InetSocketAddress(inetAddress.getHostName(), port));
+                    socket.connect(new InetSocketAddress(inetAddress, port));
                     return socket;
                 } catch (IOException e) {
                     System.out.println("Error, failed to establish connection");
-                    connect(socket);
+                    connect();
                 }
             } catch (UnknownHostException e) {
                 System.out.println(e);
-                connect(socket);
+                connect();
             }
 
         }

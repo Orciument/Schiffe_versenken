@@ -1,9 +1,7 @@
 package data;
 
 import java.io.IOException;
-import java.net.BindException;
-import java.net.Inet4Address;
-import java.net.ServerSocket;
+import java.net.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -20,35 +18,37 @@ public class Server {
     private int clientIndexHasTurn = 0;
 
     public Server() {
-        String hostname;
-        int port;
-        try {
-            hostname = Inet4Address.getLocalHost().toString();
-        } catch (java.net.UnknownHostException e) {
-            run = false;
-            return;
-        }
-        port = choosePort();
-        hostname = hostname.substring(hostname.indexOf("/") + 1);
-        System.out.println("[Server] Started auf:");
-        System.out.println(hostname + ":" + port);
+        serverSocket = initialiseServerSocket();
+        System.out.println("[Server] Started...");
         System.out.println("----------------------");
         gamePhase = 1;
     }
 
-    private int choosePort() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("[Server] Bitte gebe den Port an: ");
-        int port = 0;
+    private ServerSocket initialiseServerSocket() {
+        ServerSocket socket;
         try {
-            port = scanner.nextInt();
-            serverSocket = new ServerSocket(port);
+            socket = new ServerSocket(choosePort());
+            return socket;
         } catch (BindException | NoSuchElementException | IllegalArgumentException e) {
             System.out.println("[Server] Selected Port is invalid, please select a different Port");
 
-            return choosePort(); //Tries to open a new Server, in case the process has failed
+            return initialiseServerSocket(); //Tries to open a new Server, in case the process has failed
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    private int choosePort() {
+        int port;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("[Server] Bitte wählen den Server Port: ");
+        try {
+            port = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Port muss eine Nummer sein: ");
+            port = choosePort();
         }
         return port;
     }
