@@ -46,6 +46,8 @@ public class Client {
         String input = scanner.nextLine();
         if (input.contains(".")) {
             //Input is IPV4 Address
+            System.out.println("IPv4 is no longer supported...");
+
             if (input.contains(":")) {
                 //Input is Hostname:Port
                 hostname = input.substring(0, input.indexOf(":"));
@@ -57,10 +59,6 @@ public class Client {
             }
             try {
                 socket.connect(new InetSocketAddress(hostname, port));
-                System.out.println(socket.getInetAddress());
-                System.out.println(socket.getRemoteSocketAddress());
-                System.out.println(socket.getLocalAddress());
-                System.out.println(socket.getLocalSocketAddress());
                 return socket;
 
             } catch (IOException e) {
