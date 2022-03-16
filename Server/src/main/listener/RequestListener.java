@@ -1,13 +1,13 @@
-package listener;
+package main.listener;
 
-import data.Client;
-import data.DataHandler;
-import ressources.Exceptions.ActionNotAllowedNow;
-import ressources.Exceptions.MessageMissingArgumentsException;
-import ressources.Exceptions.MessageProtocolVersionIncompatible;
-import ressources.Exceptions.ShipAlreadyThereException;
-import ressources.protocol.Message;
-import ressources.protocol.MessageEndpoint;
+import main.data.Client;
+import main.data.DataHandler;
+import main.ressources.Exceptions.ActionNotAllowedNow;
+import main.ressources.Exceptions.MessageMissingArgumentsException;
+import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
+import main.ressources.Exceptions.ShipAlreadyThereException;
+import main.ressources.protocol.Message;
+import main.ressources.protocol.MessageEndpoint;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class RequestListener extends Thread {
     }
 
     private void listener() {
-        Thread.currentThread().setName("requestListener for Client: " + client.name());
+        Thread.currentThread().setName("RequestListener for Client: " + client.name());
         while (dataHandler.getRUN()) {
             DataInputStream dataInputStream;
             Message message;

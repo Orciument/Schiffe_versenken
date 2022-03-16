@@ -1,13 +1,13 @@
-package listener;
+package main.listener;
 
-import data.Client;
-import data.DataHandler;
-import ressources.Exceptions;
-import ressources.Exceptions.MessageMissingArgumentsException;
-import ressources.Exceptions.MessageProtocolVersionIncompatible;
-import ressources.Display;
-import ressources.protocol.Message;
-import ressources.protocol.MessageEndpoint;
+import main.data.Client;
+import main.data.DataHandler;
+import main.ressources.Display;
+import main.ressources.Exceptions;
+import main.ressources.Exceptions.MessageMissingArgumentsException;
+import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
+import main.ressources.protocol.Message;
+import main.ressources.protocol.MessageEndpoint;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class RequestListener extends Thread {
     }
 
     private void listener() {
-        Thread.currentThread().setName("Starting RequestListener");
+        Thread.currentThread().setName("RequestListener");
         while (dataHandler.getRUN()) {
             DataInputStream dataInputStream;
             Message message;
@@ -125,13 +125,12 @@ public class RequestListener extends Thread {
                         //Process Data
                         if (Boolean.parseBoolean(message.body().get("success"))) {
                             //Checking for required Data
-                            if(!message.body().containsKey("x") | !message.body().containsKey("y")) {
+                            if (!message.body().containsKey("x") | !message.body().containsKey("y")) {
                                 throw new MessageMissingArgumentsException();
                             }
-                            client.addHit(Integer.parseInt(message.body().get("x")),Integer.parseInt(message.body().get("y")));
+                            client.addHit(Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")));
                             System.out.println("Schiff getroffen!");
-                        }
-                        else {
+                        } else {
                             System.out.println("Nichts getroffen :(");
                         }
 
@@ -150,7 +149,7 @@ public class RequestListener extends Thread {
                         //Prepare needed Data
                         //b ≠ y -> b==0 is at the top
                         int a = dataHandler.getClient().shipField()[0].length - Integer.parseInt(message.body().get("y"));
-                        int b = Integer.parseInt(message.body().get("x")) -1;
+                        int b = Integer.parseInt(message.body().get("x")) - 1;
 
                         //Process Data
                         dataHandler.getClient().shipField()[a][b] = 'w';

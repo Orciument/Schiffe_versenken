@@ -1,4 +1,4 @@
-package ressources;
+package main.ressources;
 
 public class Exceptions {
     static public class MessageMissingArgumentsException extends Exception {

@@ -1,4 +1,4 @@
-package ressources.protocol;
+package main.ressources.protocol;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;

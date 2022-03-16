@@ -1,13 +1,12 @@
-package ressources;
+package main.ressources;
 
-import data.DataHandler;
+import main.data.DataHandler;
 
 
 public class Display {
     private static DataHandler dataHandler = null;
 
-    public Display(DataHandler dataHandler)
-    {
+    public Display(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
     }
 
@@ -29,9 +28,8 @@ public class Display {
         }
     }
 
-    private static void print(char [][] field) {
-        for (int i = 0; i < field.length; i++)
-        {
+    private static void print(char[][] field) {
+        for (int i = 0; i < field.length; i++) {
             for (int p = 0; p < field[i].length; p++) {
                 System.out.print(' ');
                 System.out.print(' ');

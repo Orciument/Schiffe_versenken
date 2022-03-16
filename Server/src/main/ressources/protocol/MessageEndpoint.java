@@ -1,8 +1,7 @@
-package ressources.protocol;
+package main.ressources.protocol;
 
-import data.DataHandler;
-import ressources.Exceptions.MessageProtocolVersionIncompatible;
-import static ressources.DebugOut.debugOut;
+import main.data.*;
+import main.ressources.Exceptions.*;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -10,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.LinkedHashMap;
+
+
+import static main.ressources.DebugOut.debugOut;
 
 public class MessageEndpoint {
     static DataHandler dataHandler;

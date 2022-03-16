@@ -1,8 +1,7 @@
-package listener;
+package main.listener;
 
-import data.DataHandler;
-import ressources.Display;
-import ressources.protocol.MessageEndpoint;
+import main.data.DataHandler;
+import main.ressources.protocol.MessageEndpoint;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,7 +14,7 @@ public class ConsoleListener extends Thread {
 
     public ConsoleListener(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
-        Thread.currentThread().setName("consoleListener");
+        Thread.currentThread().setName("ConsoleListener");
     }
 
     @Override
@@ -100,8 +99,14 @@ public class ConsoleListener extends Thread {
 
                         break;
                     }
+                    case "debug": {
+                        boolean bool = Boolean.parseBoolean(inputStrings.get(1));
+                        dataHandler.setDebug(bool);
+                        System.out.println("Debug Mode: " + bool);
+                    }
                     case "help", "?": {
 
+                        //TODO Help
                         break;
                     }
                     //TODO Default Error

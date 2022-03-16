@@ -1,6 +1,6 @@
-package listener;
+package main.listener;
 
-import data.DataHandler;
+import main.data.DataHandler;
 
 public class ConsoleListener extends Thread {
 
@@ -8,7 +8,7 @@ public class ConsoleListener extends Thread {
 
     public ConsoleListener(DataHandler dataHandler) {
         this.dataHandler = dataHandler;
-        Thread.currentThread().setName("consoleListener");
+        Thread.currentThread().setName("ConsoleListener");
     }
 
     @Override

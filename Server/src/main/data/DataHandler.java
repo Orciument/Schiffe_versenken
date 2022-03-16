@@ -1,9 +1,9 @@
-package data;
+package main.data;
 
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
-import static ressources.DebugOut.debugOut;
+import static main.ressources.DebugOut.*;
 
 public class DataHandler {
     private final Server server;

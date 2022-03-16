@@ -1,6 +1,7 @@
-package data;
+package main.data;
 
-import ressources.Exceptions.ShipAlreadyThereException;
+import main.ressources.Exceptions.ShipAlreadyThereException;
+import main.ressources.Exceptions.*;
 
 import java.net.Socket;
 

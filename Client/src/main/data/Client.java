@@ -1,6 +1,6 @@
-package data;
+package main.data;
 
-import ressources.Exceptions.ShipAlreadyThereException;
+import main.ressources.Exceptions.ShipAlreadyThereException;
 
 import java.io.IOException;
 import java.net.*;
@@ -35,16 +35,14 @@ public class Client {
         int port;
 
         try {
-            socket.bind(new InetSocketAddress(9000));
+            socket.bind(new InetSocketAddress(0));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(socket.getInetAddress());
-        System.out.println(socket.getRemoteSocketAddress());
-        System.out.println(socket.getLocalAddress());
-        System.out.println(socket.getLocalSocketAddress());
 
-        System.out.println("Bitte geben sie die Server Adresse ein: ");
+        System.out.println("Client startet über Port: " + socket.getLocalPort());
+
+        System.out.println("Bitte geben sie die Server Adresse ein (Nur IPv6): ");
         String input = scanner.nextLine();
         if (input.contains(".")) {
             //Input is IPV4 Address
@@ -66,7 +64,7 @@ public class Client {
                 return socket;
 
             } catch (IOException e) {
-                System.out.println("Error, failed to establish connection");
+                System.out.println("Fehler beim Verbindungsaufbau...");
                 e.printStackTrace();
                 connect();
             }
@@ -82,7 +80,7 @@ public class Client {
                     socket.connect(new InetSocketAddress(inetAddress, port));
                     return socket;
                 } catch (IOException e) {
-                    System.out.println("Error, failed to establish connection");
+                    System.out.println("Fehler beim Verbindungsaufbau...");
                     connect();
                 }
             } catch (UnknownHostException e) {
@@ -168,25 +166,25 @@ public class Client {
                     if (shipField[a - i][b] != '0') {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a - i][b] = Character.forDigit(size,10);
+                    shipField[a - i][b] = Character.forDigit(size, 10);
                 }
                 case "rechts", "right" -> {
                     if (shipField[a][b + i] != '0') {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a][b + i] = Character.forDigit(size,10);
+                    shipField[a][b + i] = Character.forDigit(size, 10);
                 }
                 case "links", "left" -> {
                     if (shipField[a][b - i] != '0') {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a][b - i] = Character.forDigit(size,10);
+                    shipField[a][b - i] = Character.forDigit(size, 10);
                 }
                 case "unten", "down" -> {
                     if (shipField[a + i][b] != '0') {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a + i][b] = Character.forDigit(size,10);
+                    shipField[a + i][b] = Character.forDigit(size, 10);
                 }
             }
         }

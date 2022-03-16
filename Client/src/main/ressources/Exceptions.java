@@ -1,4 +1,4 @@
-package ressources;
+package main.ressources;
 
 public class Exceptions {
     static public class MessageMissingArgumentsException extends Exception {
@@ -21,6 +21,7 @@ public class Exceptions {
             super(message, cause, enableSuppression, writableStackTrace);
         }
     }
+
     static public class MessageProtocolVersionIncompatible extends Exception {
         public MessageProtocolVersionIncompatible() {
         }
@@ -41,6 +42,7 @@ public class Exceptions {
             super(message, cause, enableSuppression, writableStackTrace);
         }
     }
+
     static public class ActionNotAllowedNow extends Exception {
         public ActionNotAllowedNow() {
         }
@@ -61,6 +63,7 @@ public class Exceptions {
             super(message, cause, enableSuppression, writableStackTrace);
         }
     }
+
     static public class ShipAlreadyThereException extends Exception {
         public ShipAlreadyThereException() {
         }

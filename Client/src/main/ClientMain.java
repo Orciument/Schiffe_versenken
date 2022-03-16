@@ -1,11 +1,13 @@
-import data.DataHandler;
-import listener.ConsoleListener;
-import listener.RequestListener;
-import ressources.DebugOut;
-import ressources.Display;
-import ressources.protocol.MessageEndpoint;
+package main;
 
-public class Main {
+import main.data.DataHandler;
+import main.listener.ConsoleListener;
+import main.listener.RequestListener;
+import main.ressources.DebugOut;
+import main.ressources.Display;
+import main.ressources.protocol.MessageEndpoint;
+
+public class ClientMain {
 
     public static void main(String[] args) {
         //Dialog Option, ob als Client, oder als Host gestartet werden soll

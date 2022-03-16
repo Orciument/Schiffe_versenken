@@ -1,7 +1,8 @@
-package data;
+package main.data;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.BindException;
+import java.net.ServerSocket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class Server {
 
     public Server() {
         serverSocket = initialiseServerSocket();
-        System.out.println("[Server] Started...");
+        System.out.println("[Server] Started auf Port: " + serverSocket.getLocalPort()+ "...");
         System.out.println("----------------------");
         gamePhase = 1;
     }

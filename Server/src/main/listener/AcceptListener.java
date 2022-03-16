@@ -1,18 +1,18 @@
-package listener;
+package main.listener;
 
-import data.Client;
-import data.DataHandler;
-import ressources.protocol.Message;
-import ressources.protocol.MessageEndpoint;
-import ressources.Exceptions.MessageMissingArgumentsException;
-import ressources.Exceptions.MessageProtocolVersionIncompatible;
+import main.data.Client;
+import main.data.DataHandler;
+import main.ressources.Exceptions.MessageMissingArgumentsException;
+import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
+import main.ressources.protocol.Message;
+import main.ressources.protocol.MessageEndpoint;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.LinkedHashMap;
 
-import static ressources.DebugOut.debugOut;
+import static main.ressources.DebugOut.debugOut;
 
 public class AcceptListener extends Thread {
     private final DataHandler dataHandler;
@@ -90,6 +90,6 @@ public class AcceptListener extends Thread {
                 MessageEndpoint.sent("error", body, socket);
                 debugOut("[Accept] Failed to complete the connection for: " + socket.getRemoteSocketAddress());
             }
-        }, "Thread: waitForIdentificationAnswer: " + socket.getRemoteSocketAddress()).start();
+        }, "AcceptListener: waitForIdentificationAnswer: " + socket.getRemoteSocketAddress()).start();
     }
 }

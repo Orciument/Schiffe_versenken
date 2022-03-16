@@ -7,6 +7,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="Client:jar" />
       <artifact name="Server:jar" />
     </artifacts-to-build>
   </component>
@@ -14,10 +15,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- beta release 1.0">
-      <change beforePath="$PROJECT_DIR$/Client/src/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/data/Client.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- beta release 1.1">
+      <change afterPath="$PROJECT_DIR$/Client/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/test1/test1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/data/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/DebugOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/DebugOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/protocol/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/ConsoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/DebugOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/DebugOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/data/serverTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +129,10 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Master\IdeaProjects\Schiffe_versenken_3.0\Server" />
+      <recent name="C:\Users\Master\IdeaProjects\Schiffe_versenken_3.0\Server\src" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="data" />
       <recent name="test.data" />
@@ -108,24 +145,24 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="Application.ClientMain">
+    <configuration name="ClientMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClientMain" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (2)" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Server" />
+    <configuration name="ClientMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
+      <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,15 +188,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ServerMain" />
+      <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Main (1)" />
-      <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ServerMain" />
+      <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.ClientMain (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.ClientMain (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647024801407</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="- beta release 1.1">
+      <created>1647378892689</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1647378892689</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +432,8 @@
     <MESSAGE value="- ConsoleListener fertig bis auf Help&#10;- fixed various critical bugs, fixed the not starting RequestListener&#10;- reached alpha" />
     <MESSAGE value="- entered a kind of beta" />
     <MESSAGE value="- beta release 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="- beta release 1.0" />
+    <MESSAGE value="- beta release 1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="- beta release 1.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
