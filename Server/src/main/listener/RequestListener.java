@@ -9,8 +9,8 @@ import main.ressources.Exceptions.ShipAlreadyThereException;
 import main.ressources.protocol.Message;
 import main.ressources.protocol.MessageEndpoint;
 
-import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.concurrent.RejectedExecutionException;
 
@@ -32,11 +32,9 @@ public class RequestListener extends Thread {
     private void listener() {
         Thread.currentThread().setName("RequestListener for Client: " + client.name());
         while (dataHandler.getRUN()) {
-            DataInputStream dataInputStream;
             Message message;
             try {
-                dataInputStream = new DataInputStream(client.clientSocket().getInputStream());
-                message = MessageEndpoint.receive(dataInputStream);
+                message = MessageEndpoint.receive(client.clientSocket().getInputStream());
             } catch (IOException | ClassNotFoundException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
@@ -56,17 +54,14 @@ public class RequestListener extends Thread {
                 }
 
                 switch (message.type()) {
-
-                    case "Error": {
+                    case "Error" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("error")) {
                             throw new MessageMissingArgumentsException();
                         }
                         System.out.println("Error: " + message.body().get("error"));
-                        break;
                     }
-
-                    case "PlaceShip-Request": {
+                    case "PlaceShip-Request" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("orientation")) {
                             throw new MessageMissingArgumentsException();
@@ -85,7 +80,7 @@ public class RequestListener extends Thread {
                             break;
                         }
                         //TODO Führt zu fehler wenn man 5 als size angibt, weil hier vor kein error checking ist
-                        if (client.currentShips()[size-1] >= client.maxShips()[size-1]) {
+                        if (client.currentShips()[size - 1] >= client.maxShips()[size - 1]) {
                             LinkedHashMap<String, String> body = new LinkedHashMap<>();
                             body.put("success", "false");
                             body.put("message", "you are not allowed to place more ships of this type");
@@ -97,7 +92,7 @@ public class RequestListener extends Thread {
                             client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
 
                             //Reuse the old body, because the client doesn't save where to place to ship
-                            LinkedHashMap<String, String> body = message.body();
+                            HashMap<String, String> body = message.body();
                             body.put("success", "true");
                             body.put("message", "");
                             MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
@@ -117,10 +112,8 @@ public class RequestListener extends Thread {
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), client.clientSocket());
                             MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
                         }
-                        break;
                     }
-
-                    case "Shot-Request": {
+                    case "Shot-Request" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("x") || !message.body().containsKey("y")) {
                             throw new MessageMissingArgumentsException();
@@ -153,15 +146,15 @@ public class RequestListener extends Thread {
                         }
                         //Shot is valid and hit
                         if (adversaryShipField[a][b] == 'S') {
-                            System.out.println("vorher"+ client.lives());
+                            System.out.println("vorher" + client.lives());
                             adversary.setLives(adversary.lives() - 1);
-                            System.out.println("nachher"+ client.lives());
+                            System.out.println("nachher" + client.lives());
                             dataHandler.changeClientIndexHasTurn();
                             adversaryShipField[a][b] = 'w';
 
                             //Message to original Sender
                             //Reuse the old body, because the client doesn't save where it has shot
-                            LinkedHashMap<String, String> body = message.body();
+                            HashMap<String, String> body = message.body();
                             body.put("success", "true");
                             MessageEndpoint.sent("Shot-Answer", body, client.clientSocket());
 
@@ -186,7 +179,6 @@ public class RequestListener extends Thread {
                             System.out.println("The winner is: " + adversary.name());
                             dataHandler.setRUN(false);
                         }
-                        break;
                     }
                 }
 

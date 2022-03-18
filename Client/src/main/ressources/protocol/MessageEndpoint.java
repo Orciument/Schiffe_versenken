@@ -1,26 +1,18 @@
 package main.ressources.protocol;
 
-import main.data.DataHandler;
 import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import static main.ressources.DebugOut.debugOut;
 
 public class MessageEndpoint {
-    static DataHandler dataHandler;
     static final String version = "1.0";
 
-    public MessageEndpoint(DataHandler dataHandler) {
-        MessageEndpoint.dataHandler = dataHandler;
-    }
-
-    public static void sent(String type, LinkedHashMap<String, String> body, Socket socket) {
+    public static void sent(String type, HashMap<String, String> body, Socket socket) {
         Message message = new Message(version, type, body);
 
         //Sent message to the Client
@@ -34,7 +26,7 @@ public class MessageEndpoint {
     }
 
 
-    public static Message receive(DataInputStream inputStream) throws IOException, ClassNotFoundException, MessageProtocolVersionIncompatible {
+    public static Message receive(InputStream inputStream) throws IOException, ClassNotFoundException, MessageProtocolVersionIncompatible {
 
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         //TODO Catch Casting Error

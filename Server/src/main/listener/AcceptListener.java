@@ -47,8 +47,7 @@ public class AcceptListener extends Thread {
             Message message;
             try {
                 //Get the Message from the newly connected client Socket
-                dataInputStream = new DataInputStream(socket.getInputStream());
-                message = MessageEndpoint.receive(dataInputStream);
+                message = MessageEndpoint.receive(socket.getInputStream());
 
                 //If the game has already startet, the client isn't allowed to join the game and the connection is abandoned
                 if (dataHandler.getGamePhase() != 1) {

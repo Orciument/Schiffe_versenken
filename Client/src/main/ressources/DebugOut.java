@@ -10,7 +10,7 @@ public class DebugOut {
     private static DataHandler dataHandler = null;
 
     public DebugOut(DataHandler dataHandler) {
-        this.dataHandler = dataHandler;
+        DebugOut.dataHandler = dataHandler;
     }
 
     public static void debugOut(String... strings) {

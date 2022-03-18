@@ -7,7 +7,7 @@ public class Display {
     private static DataHandler dataHandler = null;
 
     public Display(DataHandler dataHandler) {
-        this.dataHandler = dataHandler;
+        Display.dataHandler = dataHandler;
     }
 
     public static void update() {

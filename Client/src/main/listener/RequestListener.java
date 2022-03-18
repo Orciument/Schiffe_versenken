@@ -9,7 +9,6 @@ import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
 import main.ressources.protocol.Message;
 import main.ressources.protocol.MessageEndpoint;
 
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
@@ -31,11 +30,9 @@ public class RequestListener extends Thread {
     private void listener() {
         Thread.currentThread().setName("RequestListener");
         while (dataHandler.getRUN()) {
-            DataInputStream dataInputStream;
             Message message;
             try {
-                dataInputStream = new DataInputStream(client.socket().getInputStream());
-                message = MessageEndpoint.receive(dataInputStream);
+                message = MessageEndpoint.receive(client.socket().getInputStream());
             } catch (IOException | ClassNotFoundException e) {
                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                 body.put("error", "message unreadable");
@@ -58,8 +55,7 @@ public class RequestListener extends Thread {
 
                 //Message Type switch
                 switch (message.type()) {
-
-                    case "error": {
+                    case "error" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("error")) {
                             throw new MessageMissingArgumentsException();
@@ -67,20 +63,16 @@ public class RequestListener extends Thread {
 
                         //Process Data
                         System.out.println("Error: " + message.body().get("error"));
-                        break;
                     }
-
-                    case "Identification-Request": {
+                    case "Identification-Request" -> {
                         //Answer to Client
                         LinkedHashMap<String, String> body = new LinkedHashMap<>();
                         body.put("name", client.name());
                         MessageEndpoint.sent("Identification-Answer", body, client.socket());
 
                         Display.update();
-                        break;
                     }
-
-                    case "PlaceShip-Answer": {
+                    case "PlaceShip-Answer" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("success") || !message.body().containsKey("message")) {
                             throw new MessageMissingArgumentsException();
@@ -104,19 +96,15 @@ public class RequestListener extends Thread {
                         }
 
                         Display.update();
-                        break;
                     }
-
-                    case "Match-Start": {
+                    case "Match-Start" -> {
                         //Process Data
                         dataHandler.setGameState(2);
                         System.out.println("Match beginnt...");
 
                         Display.update();
-                        break;
                     }
-
-                    case "Shot-Answer": {
+                    case "Shot-Answer" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("success")) {
                             throw new MessageMissingArgumentsException();
@@ -135,10 +123,8 @@ public class RequestListener extends Thread {
                         }
 
                         Display.update();
-                        break;
                     }
-
-                    case "Update-Display": {
+                    case "Update-Display" -> {
                         //Checking for required Data
                         //TODO Change Data
                         if (!message.body().containsKey("type") || !message.body().containsKey("x") || !message.body().containsKey("y")) {
@@ -155,10 +141,8 @@ public class RequestListener extends Thread {
                         dataHandler.getClient().shipField()[a][b] = 'w';
 
                         Display.update();
-                        break;
                     }
-
-                    case "Game-End": {
+                    case "Game-End" -> {
                         //Checking for required Data
                         if (!message.body().containsKey("winner")) {
                             throw new MessageMissingArgumentsException();
@@ -168,7 +152,6 @@ public class RequestListener extends Thread {
                         dataHandler.setGameState(3);
                         System.out.println("Spiel ist vorbei...");
                         System.out.println("\"" + message.body().get("winner") + "\" hat gewonnen!");
-                        break;
                     }
                 }
 

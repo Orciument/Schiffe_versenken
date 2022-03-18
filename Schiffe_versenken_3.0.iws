@@ -15,11 +15,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- removed ipv4">
-      <change beforePath="$PROJECT_DIR$/Client/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Client.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- removed ipv4 support">
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/DebugOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/DebugOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +90,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="12" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Client/src/ressources" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/06 Game of Life Miniprojekt/sketch_220310b" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -354,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647458759326</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- removed ipv4 support">
+      <created>1647460054691</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1647460054691</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,7 +426,8 @@
     <MESSAGE value="- beta release 1.0" />
     <MESSAGE value="- beta release 1.1" />
     <MESSAGE value="- removed ipv4" />
-    <option name="LAST_COMMIT_MESSAGE" value="- removed ipv4" />
+    <MESSAGE value="- removed ipv4 support" />
+    <option name="LAST_COMMIT_MESSAGE" value="- removed ipv4 support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
