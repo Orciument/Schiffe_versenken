@@ -11,19 +11,20 @@ public class Display {
     }
 
     public static void update() {
-        if (dataHandler.getGameState() == 1) {
+        if (dataHandler.getGamePhase() == 1) {
             System.out.println("Dein Feld: ");
             print(dataHandler.getClient().shipField());
-            System.out.println("Plaziere deine Schiffe: ");
-        } else if (dataHandler.getGameState() == 2) {
+            System.out.println("Platziere deine Schiffe: ");
+        } else if (dataHandler.getGamePhase() == 2) {
             System.out.println("Dein Feld: ");
             print(dataHandler.getClient().shipField());
         }
-        if (dataHandler.getGameState() == 2) {
+        if (dataHandler.getGamePhase() == 2) {
             System.out.println("Gegner Feld: ");
             print(dataHandler.getClient().targetField());
         }
         if (dataHandler.getClient().onTurn()) {
+            //TODO Replace the [Command] with the correct description
             System.out.println("Schieße mit [Command]:");
         }
     }

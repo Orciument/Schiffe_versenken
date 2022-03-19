@@ -15,16 +15,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- removed ipv4 support">
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ClientMain.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- minor polishes">
+      <change beforePath="$PROJECT_DIR$/Client/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/data/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/DebugOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/DebugOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Exceptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,9 +128,16 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
-    <configuration name="ClientMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClientMain" />
+  <component name="RunManager" selected="Application.ServerMain">
+    <configuration name="ClientMain (1)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
+      <module name="Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientMain (2)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
       <module name="Client" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,13 +153,6 @@
     <configuration name="ClientMain" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
       <module name="Client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -174,7 +179,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ClientMain (2)" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ClientMain (1)" />
@@ -367,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647460054691</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="- minor polishes">
+      <created>1647615177923</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1647615177924</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +414,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Protokoll Angefangen, Projekt umstrukturiert" />
     <MESSAGE value="JUnit Tests angefangen, message_builder fehler mit Geräte Namen in InetSocketAddresses behoben" />
     <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
@@ -427,7 +438,8 @@
     <MESSAGE value="- beta release 1.1" />
     <MESSAGE value="- removed ipv4" />
     <MESSAGE value="- removed ipv4 support" />
-    <option name="LAST_COMMIT_MESSAGE" value="- removed ipv4 support" />
+    <MESSAGE value="- minor polishes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- minor polishes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

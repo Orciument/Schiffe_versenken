@@ -4,16 +4,22 @@ import java.util.Locale;
 
 public class DataHandler {
     private final Client client; //Representation of its own
-    private final Server server; //Representation of the connected server
     private boolean debug = false;
+    private boolean run = true;
+    int gameState = 0;
+    /*
+    0 = Vorm Spiel/Server Start
+    1 = Vor der Runde, Joinen
+    2 = In der Runde
+    3 = Nach der Runde
+    */
 
     public DataHandler() {
-        server = new Server();
         client = new Client();
         if (client.name().toLowerCase(Locale.ROOT).contains("debug")) {
             debug = true;
         }
-        setGameState(1);
+        setGamePhase(1);
     }
 
     public boolean debug() {
@@ -24,16 +30,20 @@ public class DataHandler {
         this.debug = debug;
     }
 
-    public int getGameState() {
-        return server.gameState();
+    public int getGamePhase() {
+        return gameState;
     }
 
-    public void setGameState(int gameState) {
-        server.setGameState(gameState);
+    public void setGamePhase(int gameState) {
+        this.gameState = gameState;
+    }
+
+    public void setRUN(boolean run) {
+        this.run = run;
     }
 
     public boolean getRUN() {
-        return server.run();
+        return run;
     }
 
     public Client getClient() {

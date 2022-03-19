@@ -13,11 +13,15 @@ public class DataHandler {
         server = new Server();
     }
 
-
-    //Methode does not Validate if a Client should be allowed to be added to the game
+//TODO is this a problem \/
+    // Methode does not Validate if a Client should be allowed to be added to the game
     public void addClient(Client client) {
         clientArrayList.add(client);
         debugOut("[Server] Neuer Client hinzugefügt: " + client.name);
+    }
+
+    public void removeClient (Client client) {
+        clientArrayList.remove(client);
     }
 
     public ServerSocket getServerSocket() {
@@ -76,13 +80,11 @@ public class DataHandler {
     }
 
     public void changeClientIndexHasTurn() {
-        System.out.println(server.getClientIndexHasTurn());
         if (server.getClientIndexHasTurn() == 0) {
             server.setClientIndexHasTurn(1);
         } else {
             server.setClientIndexHasTurn(0);
         }
-        System.out.println(server.getClientIndexHasTurn());
     }
 
     public int getClientCount() {

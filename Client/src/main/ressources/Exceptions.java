@@ -84,4 +84,25 @@ public class Exceptions {
             super(message, cause, enableSuppression, writableStackTrace);
         }
     }
+
+    static public class ConnectionResetByPeerException extends Exception {
+        public ConnectionResetByPeerException() {
+        }
+
+        public ConnectionResetByPeerException(String message) {
+            super(message);
+        }
+
+        public ConnectionResetByPeerException(String message, Throwable cause) {
+            super(message, cause);
+        }
+
+        public ConnectionResetByPeerException(Throwable cause) {
+            super(cause);
+        }
+
+        public ConnectionResetByPeerException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+            super(message, cause, enableSuppression, writableStackTrace);
+        }
+    }
 }

@@ -82,6 +82,7 @@ public class Client {
                     connect();
                 }
             } catch (UnknownHostException e) {
+                //TODO Schöner machen und erklären
                 System.out.println(e);
                 connect();
             }
