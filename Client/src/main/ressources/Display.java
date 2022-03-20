@@ -23,18 +23,13 @@ public class Display {
             System.out.println("Gegner Feld: ");
             print(dataHandler.getClient().targetField());
         }
-        if (dataHandler.getClient().onTurn()) {
-            //TODO Replace the [Command] with the correct description
-            System.out.println("Schieße mit [Command]:");
-        }
     }
 
     private static void print(char[][] field) {
-        for (int i = 0; i < field.length; i++) {
-            for (int p = 0; p < field[i].length; p++) {
-                System.out.print(' ');
-                System.out.print(' ');
-                System.out.print(field[i][p]);
+        for (char[] chars : field) {
+            for (char aChar : chars) {
+                System.out.print("  ");
+                System.out.print(aChar);
             }
             System.out.println();
         }

@@ -8,6 +8,7 @@ import main.ressources.Display;
 
 public class ClientMain {
 
+    @SuppressWarnings("InstantiationOfUtilityClass")
     public static void main(String[] args) {
         //Dialog Option, ob als Client, oder als Host gestartet werden soll
         DataHandler dataHandler = new DataHandler();

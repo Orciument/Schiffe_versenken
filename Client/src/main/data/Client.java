@@ -8,11 +8,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
-    private Socket socket;
+    private final Socket socket;
     private final String name;
     private final char[][] shipField = new char[10][10];
     private final char[][] targetField = new char[10][10];
-    private boolean onTurn;
 
     public Client() {
         Scanner scanner = new Scanner(System.in);
@@ -82,8 +81,7 @@ public class Client {
                     connect();
                 }
             } catch (UnknownHostException e) {
-                //TODO Schöner machen und erklären
-                System.out.println(e);
+                System.out.println("Fehler beim Auflösen der IPv6 Adresse...");
                 connect();
             }
 
@@ -204,14 +202,5 @@ public class Client {
     public char[][] targetField() {
         return targetField;
     }
-
-    public boolean onTurn() {
-        return onTurn;
-    }
-
-    public void setOnTurn(boolean onTurn) {
-        this.onTurn = onTurn;
-    }
-
 
 }

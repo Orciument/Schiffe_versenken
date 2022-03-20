@@ -1,13 +1,15 @@
 package main.listener;
 
 import main.data.DataHandler;
-import main.ressources.Exceptions;
+import main.ressources.Exceptions.*;
 import main.ressources.protocol.MessageEndpoint;
+
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.concurrent.RejectedExecutionException;
 
 import static main.ressources.DebugOut.debugOut;
 
@@ -32,8 +34,6 @@ public class ConsoleListener extends Thread {
                 String input = scanner.nextLine();
                 input = input.toLowerCase(Locale.ROOT);
 
-                //TODO Error Correction
-
                 if (!input.isEmpty()) {
 
                     //Error Correction
@@ -48,6 +48,7 @@ public class ConsoleListener extends Thread {
                     }
 
                     //Splits Line at each Space and stores each Substring in an ArrayList
+                    //At Index = 0 is the Command, and at each next index is the corresponding Argument => 3. Argument = index 3
                     ArrayList<String> inputStrings = new ArrayList<>();
                     while (input.contains(" ")) {
                         inputStrings.add(input.substring(0, input.indexOf(" ")));
@@ -55,10 +56,14 @@ public class ConsoleListener extends Thread {
                     }
                     inputStrings.add(input);
 
-                    //TODO Check if the Argumets are actually there
+
                     switch (inputStrings.get(0)) {
-                        //TODO
-                        case "shot": {
+                        case "shot" -> {
+                            //Check if the Input has enough arguments
+                            if (inputStrings.size() <= 2) {
+                                throw new RejectedExecutionException();
+                            }
+
                             int x;
                             int y;
                             try {
@@ -68,7 +73,7 @@ public class ConsoleListener extends Thread {
                                     throw new NumberFormatException();
                                 }
                             } catch (NumberFormatException e) {
-                                System.out.println("Eingabe Fehlerhaft. Koordinaten müssen .");
+                                System.out.println("Eingabe Fehlerhaft. Koordinaten müssen zwischen 1 und 10 liegen");
                                 break;
                             }
 
@@ -77,9 +82,14 @@ public class ConsoleListener extends Thread {
                             body.put("y", String.valueOf(y));
                             MessageEndpoint.sent("Shot-Request", body, dataHandler.getClient().socket());
 
-                            break;
                         }
-                        case "placeship", "ship", "place": {
+
+                        case "placeship", "ship", "place" -> {
+                            //Check if the Input has enough arguments
+                            if (inputStrings.size() <= 4) {
+                                throw new RejectedExecutionException();
+                            }
+
                             int x;
                             int y;
                             int size;
@@ -100,27 +110,38 @@ public class ConsoleListener extends Thread {
                             body.put("y", String.valueOf(y));
                             body.put("orientation", orientation);
                             MessageEndpoint.sent("PlaceShip-Request", body, dataHandler.getClient().socket());
-
-                            break;
                         }
-                        case "debug": {
+
+                        case "debug" -> {
+                            //Check if the Input has enough arguments
+                            if (inputStrings.size() <= 1) {
+                                throw new RejectedExecutionException();
+                            }
+
                             boolean bool = Boolean.parseBoolean(inputStrings.get(1));
                             dataHandler.setDebug(bool);
                             System.out.println("Debug Mode: " + bool);
                         }
-                        case "help", "?": {
 
-                            //TODO Help
-                            break;
+                        case "help", "?" -> {
+                            System.out.println("Befehle:");
+                            System.out.println("(Alles in eckigen Klammern muss ersetzt werden und zeigt nur was da hin muss)");
+                            System.out.println("    - shot [x-Koordinate] [y-Koordinate]        < Schieße auf das Feld deines Gegners");
+                            System.out.println("    - placeship [Ship Size] [x-Koordinate] [y-Koordinate] [Blickrichtung]      < Platziere ein Schiff auf deinem Feld");
+                            System.out.println("    - debug [true/false]        < Schalte den debug Mode an, für weiter Informationen");
+                            System.out.println("    - help      < Diese Seite");
                         }
-                        //TODO Default Error
+
+                        default -> throw new RejectedExecutionException();
                     }
                 }
             }
-        } catch (Exceptions.ConnectionResetByPeerException e) {
+        } catch (ConnectionResetByPeerException e) {
             debugOut("[Request] Lost Connection to the Server, disconnected");
             System.out.println("Verbindung zum Server verloren");
             dataHandler.setRUN(false);
+        } catch (RejectedExecutionException e) {
+            System.out.println("Command existiert nicht, oder Argumente sind fehlerhaft");
         }
     }
 }

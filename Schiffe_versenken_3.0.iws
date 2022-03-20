@@ -15,10 +15,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- minor polishes">
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- added ConnectionResetByPeerException and implemented the needed modifications">
+      <change beforePath="$PROJECT_DIR$/Client/src/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/data/Server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" afterDir="false" />
@@ -27,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/data/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
@@ -74,7 +74,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="24LBu3bwxZMJhEP6L5CG9vSd4ic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -128,7 +128,13 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServerMain">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="?" />
+      <command value="open" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ClientMain">
     <configuration name="ClientMain (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClientMain" />
       <module name="Client" />
@@ -157,13 +163,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Server" />
@@ -180,9 +179,9 @@
     </configuration>
     <list>
       <item itemvalue="Application.ClientMain (2)" />
+      <item itemvalue="Application.ClientMain (1)" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="Application.ClientMain" />
-      <item itemvalue="Application.ClientMain (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -379,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647615177924</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="- added ConnectionResetByPeerException and implemented the needed modifications">
+      <created>1647692583018</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1647692583018</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,7 +420,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="JUnit Tests angefangen, message_builder fehler mit Geräte Namen in InetSocketAddresses behoben" />
     <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
     <MESSAGE value="Added sender.java" />
@@ -439,7 +444,8 @@
     <MESSAGE value="- removed ipv4" />
     <MESSAGE value="- removed ipv4 support" />
     <MESSAGE value="- minor polishes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- minor polishes" />
+    <MESSAGE value="- added ConnectionResetByPeerException and implemented the needed modifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added ConnectionResetByPeerException and implemented the needed modifications" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -457,6 +463,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$server.ic" NAME="server Coverage Results" MODIFIED="1643481007581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$ServerMain.ic" NAME="ServerMain Coverage Results" MODIFIED="1647797562975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$serverMain.ic" NAME="serverMain Coverage Results" MODIFIED="1644081189137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Schiffe_versenken_3_0$ClientMain.ic" NAME="ClientMain Coverage Results" MODIFIED="1647797571958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

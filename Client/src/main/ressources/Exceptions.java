@@ -1,5 +1,6 @@
 package main.ressources;
 
+@SuppressWarnings("ALL")
 public class Exceptions {
     static public class MessageMissingArgumentsException extends Exception {
         public MessageMissingArgumentsException() {

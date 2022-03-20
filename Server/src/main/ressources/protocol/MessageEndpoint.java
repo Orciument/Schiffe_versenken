@@ -3,10 +3,7 @@ package main.ressources.protocol;
 import main.ressources.Exceptions.ConnectionResetByPeerException;
 import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.HashMap;
@@ -21,7 +18,7 @@ public class MessageEndpoint {
 
         //Sent message to the Client
         try {
-            if (!socket.isConnected() || socket.isInputShutdown() || !socket.isBound()) {
+            if (!socket.isConnected() || socket.isInputShutdown() || !socket.isBound() || socket.isClosed()) {
                 throw new ConnectionResetByPeerException();
             }
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -44,11 +41,12 @@ public class MessageEndpoint {
 
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-            //TODO Catch Casting Error
             Object o = objectInputStream.readObject();
             message = (Message) o;
         } catch (SocketException e) {
             throw new ConnectionResetByPeerException();
+        } catch (ClassCastException | InvalidClassException e) {
+            throw new ClassNotFoundException();
         }
 
 

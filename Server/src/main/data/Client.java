@@ -9,14 +9,14 @@ public class Client {
     final Socket clientSocket;
 
     final String name;
-    char[][] shipField = new char[10][10];
+    final char[][] shipField = new char[10][10];
     /*
     Does not say what ship there is, but only THAT there is one, or was one
         'S'= Ship is there
         'W'= Ship was there and was hit
      */
     final int[] maxShips = {0,0,0,1};
-    int[] currentShips = new int[4];
+    final int[] currentShips = new int[4];
     int lives;
 
     public void addShip(int size, int x, int y, String direction) throws ShipAlreadyThereException, IllegalArgumentException {
@@ -30,7 +30,7 @@ public class Client {
             throw new IllegalArgumentException("Unexpected value: " + a);
         } else if (shipField[0].length < b) {
             throw new IllegalArgumentException("Unexpected value: " + b);
-        } else if (size < 1 | size > 4) {
+        } else if (size < 1 || size > 4) {
             throw new IllegalArgumentException("Unexpected value: " + size);
         }
 
@@ -60,6 +60,7 @@ public class Client {
                     }
                     shipField[a + i][b] = 'S';
                 }
+                default -> throw new IllegalArgumentException();
             }
         }
         lives += size;

@@ -3,9 +3,7 @@ package main.listener;
 import main.data.Client;
 import main.data.DataHandler;
 import main.ressources.Display;
-import main.ressources.Exceptions;
-import main.ressources.Exceptions.MessageMissingArgumentsException;
-import main.ressources.Exceptions.MessageProtocolVersionIncompatible;
+import main.ressources.Exceptions.*;
 import main.ressources.protocol.Message;
 import main.ressources.protocol.MessageEndpoint;
 
@@ -84,7 +82,7 @@ public class RequestListener extends Thread {
                                 }
                                 try {
                                     client.addShip(Integer.parseInt(message.body().get("size")), Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
-                                } catch (Exceptions.ShipAlreadyThereException e) {
+                                } catch (ShipAlreadyThereException e) {
                                     e.printStackTrace();
                                 }
 
@@ -172,9 +170,10 @@ public class RequestListener extends Thread {
             client.socket().close();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (Exceptions.ConnectionResetByPeerException e) {
+        } catch (ConnectionResetByPeerException e) {
             debugOut("[Request] Lost Connection to Client :" + client.name());
             dataHandler.setRUN(false);
+            stop = true;
         }
     }
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Server {
     private static ServerSocket serverSocket;
     private boolean run = true;
-    private int gamePhase = 0;
+    private int gamePhase;
     /*
     0 = Vorm Spiel/Server Start
     1 = Vor der Runde, Joinen
@@ -20,6 +20,7 @@ public class Server {
 
     public Server() {
         serverSocket = initialiseServerSocket();
+        assert serverSocket != null;
         System.out.println("[Server] Started auf Port: " + serverSocket.getLocalPort()+ "...");
         System.out.println("----------------------");
         gamePhase = 1;

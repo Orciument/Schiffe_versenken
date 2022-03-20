@@ -91,7 +91,6 @@ public class AcceptListener extends Thread {
                 }
             } catch (ConnectionResetByPeerException e) {
                 debugOut("[Accept] Lost Connection to new Client, ");
-                return;
             }
         }, "AcceptListener: waitForIdentificationAnswer: " + socket.getRemoteSocketAddress()).start();
     }

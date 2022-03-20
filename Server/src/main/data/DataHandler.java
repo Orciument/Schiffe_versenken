@@ -13,7 +13,6 @@ public class DataHandler {
         server = new Server();
     }
 
-//TODO is this a problem \/
     // Methode does not Validate if a Client should be allowed to be added to the game
     public void addClient(Client client) {
         clientArrayList.add(client);

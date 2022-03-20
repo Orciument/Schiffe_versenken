@@ -62,15 +62,24 @@ public class RequestListener extends Thread {
                             }
                             System.out.println("Error: " + message.body().get("error"));
                         }
+
                         case "PlaceShip-Request" -> {
                             //Checking for required Data
                             if (!message.body().containsKey("size") || !message.body().containsKey("x") || !message.body().containsKey("y") || !message.body().containsKey("orientation")) {
                                 throw new MessageMissingArgumentsException();
                             }
-                            //TODO Validate that all arguments are valid. No size = 5, no x = 11
 
                             //Prepare needed Data
                             int size = Integer.parseInt(message.body().get("size"));
+                            int x = Integer.parseInt(message.body().get("x"));
+                            int y = Integer.parseInt(message.body().get("y"));
+                            String orientation = message.body().get("orientation");
+
+                            //Validate Data
+                            //x, y, and direction don't need to be validated, because they will only be used for addShip and this method checks for itself
+                            if (size < 1 || size > 4) {
+                                throw new RejectedExecutionException("Ship size musst be between 1-4");
+                            }
 
                             //Process Information and Answer to Client
                             if (dataHandler.getGamePhase() != 1) {
@@ -80,7 +89,7 @@ public class RequestListener extends Thread {
                                 MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                                 break;
                             }
-                            //TODO Führt zu fehler wenn man 5 als size angibt, weil hier vor kein error checking ist
+
                             if (client.currentShips()[size - 1] >= client.maxShips()[size - 1]) {
                                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
                                 body.put("success", "false");
@@ -90,7 +99,7 @@ public class RequestListener extends Thread {
                             }
 
                             try {
-                                client.addShip(size, Integer.parseInt(message.body().get("x")), Integer.parseInt(message.body().get("y")), message.body().get("orientation"));
+                                client.addShip(size, x, y, orientation);
 
                                 //Reuse the old body, because the client doesn't save where to place to ship
                                 HashMap<String, String> body = message.body();
@@ -99,7 +108,7 @@ public class RequestListener extends Thread {
                                 MessageEndpoint.sent("PlaceShip-Answer", body, client.clientSocket());
                             } catch (IllegalArgumentException e) {
                                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
-                                body.put("error", "coordinates to place ship are wrongly defined");
+                                body.put("error", "coordinates, or direction to place ship are wrongly defined");
                                 MessageEndpoint.sent("error", body, client.clientSocket());
                             } catch (ShipAlreadyThereException e) {
                                 LinkedHashMap<String, String> body = new LinkedHashMap<>();
@@ -114,6 +123,7 @@ public class RequestListener extends Thread {
                                 MessageEndpoint.sent("Match-Start", new LinkedHashMap<>(), dataHandler.getOtherClient(client).clientSocket());
                             }
                         }
+
                         case "Shot-Request" -> {
                             //Checking for required Data
                             if (!message.body().containsKey("x") || !message.body().containsKey("y")) {
@@ -124,7 +134,6 @@ public class RequestListener extends Thread {
                             }
                             if (!dataHandler.getIfClientHasTurn(client)) {
                                 throw new RejectedExecutionException("Error: You are not on turn");
-                                //TODO Catch this exception
                             }
 
                             //Prepare needed Data
