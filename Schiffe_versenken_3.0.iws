@@ -15,22 +15,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="- added ConnectionResetByPeerException and implemented the needed modifications">
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/data/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/ConsoleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
+    <list default="true" id="7fb33668-cb7e-4b51-b03f-52c2d4fd9831" name="Changes" comment="1.0 Release&#10;&#10;- added a few exceptions &#10;- added help command&#10;- completed all TODOs&#10;- fixed all warnings">
       <change beforePath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Schiffe_versenken_3.0.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/data/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/data/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/data/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/AcceptListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/listener/RequestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/ressources/protocol/MessageEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +168,7 @@
     <list>
       <item itemvalue="Application.ClientMain (2)" />
       <item itemvalue="Application.ClientMain (1)" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="Application.ClientMain" />
     </list>
@@ -385,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647692583018</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="1.0 Release&#10;&#10;- added a few exceptions &#10;- added help command&#10;- completed all TODOs&#10;- fixed all warnings">
+      <created>1647797995746</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1647797995746</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,7 +416,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="JUnit Tests für message_builder.buildMessage" />
     <MESSAGE value="Minor Fixes, Suppressed unnecessary warnings" />
     <MESSAGE value="Added sender.java" />
     <MESSAGE value="Added new Tests to message_builder. Upgraded to Java 17" />
@@ -445,7 +440,8 @@
     <MESSAGE value="- removed ipv4 support" />
     <MESSAGE value="- minor polishes" />
     <MESSAGE value="- added ConnectionResetByPeerException and implemented the needed modifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added ConnectionResetByPeerException and implemented the needed modifications" />
+    <MESSAGE value="1.0 Release&#10;&#10;- added a few exceptions &#10;- added help command&#10;- completed all TODOs&#10;- fixed all warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0 Release&#10;&#10;- added a few exceptions &#10;- added help command&#10;- completed all TODOs&#10;- fixed all warnings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

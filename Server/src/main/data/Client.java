@@ -15,7 +15,7 @@ public class Client {
         'S'= Ship is there
         'W'= Ship was there and was hit
      */
-    final int[] maxShips = {0,0,0,1};
+    final int[] maxShips = {4, 3, 2, 1};
     final int[] currentShips = new int[4];
     int lives;
 
@@ -40,26 +40,32 @@ public class Client {
                     if (shipField[a - i][b] != 0) {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a - i][b] = 'S';
                 }
                 case "rechts", "right" -> {
                     if (shipField[a][b + i] != 0) {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a][b + i] = 'S';
                 }
                 case "links", "left" -> {
                     if (shipField[a][b - i] != 0) {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a][b - i] = 'S';
                 }
                 case "unten", "down" -> {
                     if (shipField[a + i][b] != 0) {
                         throw new ShipAlreadyThereException();
                     }
-                    shipField[a + i][b] = 'S';
                 }
+                default -> throw new IllegalArgumentException();
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            switch (direction) {
+                case "oben", "up" -> shipField[a - i][b] = 'S';
+                case "rechts", "right" -> shipField[a][b + i] = 'S';
+                case "links", "left" -> shipField[a][b - i] = 'S';
+                case "unten", "down" -> shipField[a + i][b] = 'S';
                 default -> throw new IllegalArgumentException();
             }
         }
