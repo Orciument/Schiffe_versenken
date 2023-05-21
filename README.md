@@ -1,5 +1,5 @@
 # Schiffe_versenken
-Dies ist das Projekt für meine Facharbeit in der 9.Klasse über den TCP/IP Stack (bzw. auch OSI), dieses Projekt hat dabei die Facharbeit begleitet und diente als Quelle für verschiedenen Besipielcode in der Facharbeit.
+Dies ist das Projekt für meine Facharbeit in der 10.Klasse über den TCP/IP Stack (bzw. auch OSI), dieses Projekt hat dabei die Facharbeit begleitet und diente als Quelle für verschiedenen Besipielcode in der Facharbeit.
 
 Das Projekt besteht aus 2 Komponenten, dem Client und dem Server. Der Server hostet dabei das Spiel, und die Clients sind jeweisl die beiden Spieler.
 
