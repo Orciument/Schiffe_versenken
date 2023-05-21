@@ -15,11 +15,13 @@ Falls Client und Server in verschiedenen Netzwerken sind manuell der Port freige
 
 Sobald das Spiel gestartet hat stehen einem diese Befehle zur Verfügung, diese können dazu auch immer mit ``help`` eingesehen werden:
 Befehle:
-(Alles in eckigen Klammern muss ersetzt werden und zeigt nur was da hin muss)
-    - shot [x-Koordinate] [y-Koordinate]        < Schieße auf das Feld deines Gegners
-    - placeship [Ship Size] [x-Koordinate] [y-Koordinate] [Blickrichtung]      < Platziere ein Schiff auf deinem Feld
-    - debug [true/false]        < Schalte den debug Mode an, für weiter Informationen
-    - help      < Diese Seite
+(Alles in und inklusive der eckigen Klammern muss ersetzt werden, und sind nur platzhalter)
+| Command | Beschreibung |
+|---------|--------------|
+| shot [x-Koordinate] [y-Koordinate] | Schieße auf das Feld deines Gegners |
+| placeship [Ship Size] [x-Koordinate] [y-Koordinate] [Blickrichtung] | Platziere ein Schiff auf deinem Feld, die Blickrichtung als ("up","down","left", "right") |
+| debug [true/false] | Schalte den debug Mode an, für weiter Informationen |
+| help | |
 
 ## Beispiel
 ![image](https://github.com/Orciument/Schiffe_versenken/assets/67759477/437e6a9c-d7fa-4b31-975a-91f902b3a5d9)
